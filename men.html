@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gold & Dev — Menswear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#faf6ef;
+    --cream-2:#efe8d9;
+    --ink:#211d19;
+    --ink-soft:#524b41;
+    --gold:#B3874F;
+    --gold-deep:#8a642f;
+    --gold-light:#e3c193;
+    --line:rgba(33,29,25,.1);
+    --shadow: 0 30px 60px -25px rgba(33,29,25,.25);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block; max-width:100%;}
+  a{text-decoration:none; color:inherit;}
+  h1,h2,h3,h4{font-family:'Fraunces', serif; font-weight:500; line-height:1.1; letter-spacing:-.01em;}
+  em{font-style:italic; color:var(--gold-deep);}
+  .wrap{max-width:1360px; margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--gold-deep);
+  }
+  .eyebrow::before{content:''; width:22px; height:1.5px; background:var(--gold-deep);}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:15px 32px; border-radius:100px; font-weight:700; font-size:14px;
+    border:1px solid transparent; cursor:pointer; transition:.35s cubic-bezier(.2,.8,.2,1);
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--ink); color:var(--cream);}
+  .btn-primary:hover{background:var(--gold-deep); transform:translateY(-2px); box-shadow:0 14px 28px -10px rgba(138,100,47,.55);}
+  .btn-outline{border-color:var(--ink); color:var(--ink);}
+  .btn-outline:hover{background:var(--ink); color:var(--cream); transform:translateY(-2px);}
+  .btn-light{background:var(--cream); color:var(--ink);}
+  .btn-light:hover{background:var(--gold); color:var(--cream); transform:translateY(-2px);}
+
+  /* ---------- reveal-on-scroll ---------- */
+  .reveal{opacity:0; transform:translateY(36px); transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- topbar ---------- */
+  .topbar{
+    background:var(--ink); color:var(--cream-2); text-align:center;
+    font-size:12.5px; letter-spacing:.05em; padding:10px 14px; font-weight:600;
+  }
+  .topbar span{color:var(--gold-light);}
+
+  /* ---------- header ---------- */
+  header{position:sticky; top:0; z-index:200; background:rgba(250,246,239,.86); backdrop-filter:blur(14px); border-bottom:1px solid var(--line);}
+  nav.wrap{display:flex; align-items:center; justify-content:space-between; padding:18px 32px;}
+  .logo{display:flex; align-items:center; gap:10px;}
+  .logo-mark{width:36px; height:36px; flex-shrink:0;}
+  .logo-text{font-family:'Fraunces', serif; font-size:19px; font-weight:600; letter-spacing:.02em; display:block;}
+  .logo-sub{font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); display:block; margin-top:1px;}
+  .nav-links{display:flex; align-items:center; gap:34px; list-style:none;}
+  .nav-links a{font-size:14.5px; font-weight:600; position:relative; padding-bottom:4px;}
+  .nav-links a::after{content:''; position:absolute; left:0; bottom:0; width:0; height:1.5px; background:var(--gold-deep); transition:width .3s ease;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-actions{display:flex; align-items:center; gap:16px;}
+  .icon-btn{position:relative; width:38px; height:38px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition:.3s;}
+  .icon-btn:hover{background:var(--cream-2);}
+  .icon-btn svg{width:19px; height:19px; fill:none; stroke:var(--ink); stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round;}
+  .cart-count{position:absolute; top:2px; right:2px; background:var(--gold-deep); color:#fff; font-size:9.5px; font-weight:800; width:15px; height:15px; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:.2s;}
+  .burger{display:none; flex-direction:column; gap:5px; width:26px; background:none; border:none; cursor:pointer;}
+  .burger span{width:100%; height:2px; background:var(--ink); border-radius:2px;}
+  .mobile-menu{display:none; flex-direction:column; background:var(--cream); border-top:1px solid var(--line); padding:8px 32px 20px;}
+  .mobile-menu a{padding:14px 0; border-bottom:1px solid var(--line); font-weight:600; font-size:15px; text-transform:capitalize;}
+  .mobile-menu.open{display:flex;}
+
+  /* ---------- hero with video ---------- */
+  .hero{position:relative; min-height:92vh; display:flex; align-items:flex-end; overflow:hidden; color:var(--cream);}
+  .hero video, .hero .hero-fallback{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
+  .hero::before{
+    content:''; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg, rgba(33,29,25,.35) 0%, rgba(33,29,25,.25) 40%, rgba(33,29,25,.82) 100%);
+  }
+  .hero-content{position:relative; z-index:2; width:100%; padding:0 32px 72px; max-width:1360px; margin:0 auto;}
+  .hero-content .eyebrow{color:var(--gold-light);}
+  .hero-content .eyebrow::before{background:var(--gold-light);}
+  .hero-content h1{font-size:clamp(40px,6.4vw,86px); color:var(--cream); max-width:820px;}
+  .hero-content p{font-size:16.5px; color:rgba(250,246,239,.82); max-width:460px; margin:20px 0 30px; line-height:1.7;}
+  .hero-cta{display:flex; gap:16px; flex-wrap:wrap;}
+  .hero .btn-outline{border-color:rgba(250,246,239,.55); color:var(--cream);}
+  .hero .btn-outline:hover{background:var(--cream); color:var(--ink);}
+  .sound-toggle{
+    position:absolute; z-index:2; bottom:34px; right:32px;
+    display:flex; align-items:center; gap:8px; background:rgba(250,246,239,.14);
+    border:1px solid rgba(250,246,239,.35); color:var(--cream); padding:10px 18px;
+    border-radius:100px; font-size:12.5px; font-weight:700; cursor:pointer; backdrop-filter:blur(6px);
+  }
+  .sound-toggle svg{width:15px; height:15px; stroke:var(--cream); fill:none; stroke-width:1.8;}
+
+  .marquee{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--ink); overflow:hidden; padding:15px 0;}
+  .marquee-track{display:flex; width:max-content; animation:scroll 32s linear infinite;}
+  .marquee-track span{white-space:nowrap; font-family:'Fraunces', serif; font-style:italic; font-size:19px; color:var(--gold-light); padding-right:26px;}
+  @keyframes scroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+
+  section{padding:112px 0;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:52px; flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(28px,3.4vw,44px);}
+  .section-head p{max-width:340px; color:var(--ink-soft); font-size:14.5px; line-height:1.7;}
+
+  /* ---------- category grid ---------- */
+  .cat-grid{display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:230px; gap:20px;}
+  .cat-card{position:relative; border-radius:22px; overflow:hidden; grid-row:span 2; cursor:pointer;}
+  .cat-card.short{grid-row:span 1;}
+  .cat-card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .7s cubic-bezier(.2,.7,.2,1);}
+  .cat-card:hover img{transform:scale(1.08);}
+  .cat-card .overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(33,29,25,0) 40%, rgba(33,29,25,.78) 100%);}
+  .cat-card-content{position:absolute; left:22px; bottom:20px; right:22px; z-index:2; color:var(--cream);}
+  .cat-card-content h3{font-size:22px; margin-bottom:8px;}
+  .pill-link{font-size:12.5px; font-weight:700; border-bottom:1px solid rgba(250,246,239,.5); padding-bottom:2px;}
+  .cat-card.sage .cat-card-content, .cat-card.blush .cat-card-content{color:var(--ink);}
+  .cat-card.sage{background:#cdd6c4;}
+  .cat-card.blush{background:var(--gold-light);}
+  .cat-card.sage .pill-link, .cat-card.blush .pill-link{border-color:rgba(33,29,25,.4);}
+
+  /* ---------- tabs + products ---------- */
+  .tab-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:44px;}
+  .tab-btn{
+    padding:11px 22px; border-radius:100px; border:1px solid var(--line); background:transparent;
+    font-family:'Manrope',sans-serif; font-weight:700; font-size:13.5px; cursor:pointer; transition:.3s;
+  }
+  .tab-btn.active, .tab-btn:hover{background:var(--ink); color:var(--cream); border-color:var(--ink);}
+
+  .product-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:26px;}
+  .product-card{cursor:pointer;}
+  .product-img{position:relative; border-radius:18px; overflow:hidden; aspect-ratio:4/5; background:var(--cream-2);}
+  .product-img img{width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.2,.7,.2,1);}
+  .product-card:hover .product-img img{transform:scale(1.06);}
+  .tag{position:absolute; top:14px; left:14px; z-index:2; font-size:11px; font-weight:800; padding:6px 12px; border-radius:100px; letter-spacing:.03em;}
+  .tag.new{background:var(--ink); color:var(--cream);}
+  .tag.sale{background:var(--gold-deep); color:#fff;}
+  .wish-btn{position:absolute; top:12px; right:12px; z-index:2; width:34px; height:34px; border-radius:50%; background:rgba(250,246,239,.9); display:flex; align-items:center; justify-content:center; transition:.25s;}
+  .wish-btn:hover{transform:scale(1.1);}
+  .wish-btn svg{width:16px; height:16px; stroke:var(--ink); fill:none; stroke-width:1.7;}
+  .product-info{padding-top:16px;}
+  .product-info .cat{font-size:11.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft); font-weight:700;}
+  .product-info h4{font-size:16.5px; margin:6px 0 10px; font-weight:500;}
+  .price-row{display:flex; align-items:center; justify-content:space-between;}
+  .price{font-family:'Fraunces', serif; font-size:17px; font-weight:600;}
+  .price .was{font-size:13.5px; color:var(--ink-soft); text-decoration:line-through; font-weight:400; margin-right:8px;}
+  .add-btn{width:34px; height:34px; border-radius:50%; border:1px solid var(--line); background:transparent; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:.3s;}
+  .add-btn:hover{background:var(--ink); border-color:var(--ink);}
+  .add-btn svg{width:15px; height:15px; stroke:var(--ink); fill:none; stroke-width:2;}
+  .add-btn:hover svg{stroke:var(--cream);}
+  .products-cta{text-align:center; margin-top:56px;}
+
+  /* ---------- brand film section ---------- */
+  .film{position:relative; border-radius:32px; overflow:hidden; max-width:1360px; margin:0 auto; aspect-ratio:16/8; box-shadow:var(--shadow);}
+  .film video{width:100%; height:100%; object-fit:cover;}
+  .film-overlay{position:absolute; inset:0; background:linear-gradient(0deg, rgba(33,29,25,.7), rgba(33,29,25,0) 55%);}
+  .film-copy{position:absolute; left:36px; bottom:32px; right:36px; color:var(--cream); z-index:2; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;}
+  .film-copy h3{font-size:clamp(22px,2.6vw,32px); max-width:460px;}
+  .play-btn{
+    width:66px; height:66px; border-radius:50%; background:rgba(250,246,239,.16); border:1px solid rgba(250,246,239,.5);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; backdrop-filter:blur(6px); transition:.3s;
+  }
+  .play-btn:hover{background:var(--gold); border-color:var(--gold);}
+  .play-btn svg{width:20px; height:20px; fill:var(--cream); margin-left:3px;}
+
+  /* ---------- features ---------- */
+  .feature-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .feature-card{background:var(--cream-2); border-radius:24px; padding:40px 32px; min-height:220px; display:flex; align-items:flex-end;}
+  .feature-icon{width:46px; height:46px; border-radius:50%; background:var(--ink); display:flex; align-items:center; justify-content:center; margin-bottom:20px;}
+  .feature-icon svg{width:20px; height:20px; stroke:var(--cream); fill:none; stroke-width:1.7;}
+  .feature-card .label{font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.1em; color:var(--gold-deep); display:block; margin-bottom:10px;}
+  .feature-card h3{font-size:19px; font-weight:500; max-width:280px;}
+
+  /* ---------- lookbook ---------- */
+  .lookbook{position:relative; border-radius:32px; overflow:hidden; min-height:520px; display:flex; align-items:flex-end;}
+  .lookbook img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .lookbook::before{content:''; position:absolute; inset:0; background:linear-gradient(90deg, rgba(33,29,25,.78) 0%, rgba(33,29,25,.15) 60%);}
+  .lookbook-copy{position:relative; z-index:2; color:var(--cream); padding:52px; max-width:480px;}
+  .lookbook-copy .eyebrow{color:var(--gold-light);}
+  .lookbook-copy .eyebrow::before{background:var(--gold-light);}
+  .lookbook-copy h2{font-size:clamp(28px,3.6vw,42px); margin:14px 0 18px; color:var(--cream);}
+  .lookbook-copy p{color:rgba(250,246,239,.8); font-size:15px; line-height:1.7; margin-bottom:26px;}
+
+  /* ---------- testimonials ---------- */
+  .testi-wrap{background:var(--cream-2); border-radius:36px; padding:60px 0 46px;}
+  .testi-track{display:flex; gap:22px; overflow-x:auto; padding:0 40px; scroll-snap-type:x mandatory;}
+  .testi-track::-webkit-scrollbar{display:none;}
+  .testi-card{scroll-snap-align:start; flex:0 0 340px; background:var(--cream); border-radius:22px; padding:30px; box-shadow:0 20px 40px -25px rgba(33,29,25,.2);}
+  .testi-stars{color:var(--gold-deep); letter-spacing:2px; margin-bottom:14px;}
+  .testi-card .quote{font-size:14.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:22px; min-height:96px;}
+  .testi-person{display:flex; align-items:center; gap:12px;}
+  .testi-person img{width:42px; height:42px; border-radius:50%; object-fit:cover;}
+  .testi-person b{font-size:14px; display:block;}
+  .testi-person span{font-size:12.5px; color:var(--ink-soft);}
+
+  /* ---------- newsletter ---------- */
+  .newsletter{background:var(--ink); border-radius:36px; padding:70px 60px; text-align:center;}
+  .newsletter h2{color:var(--cream); font-size:clamp(24px,3vw,36px); max-width:640px; margin:0 auto 30px;}
+  .newsletter-form{display:flex; justify-content:center; gap:12px; max-width:480px; margin:0 auto; flex-wrap:wrap;}
+  .newsletter-form input{
+    flex:1; min-width:220px; padding:15px 22px; border-radius:100px; border:1px solid rgba(250,246,239,.3);
+    background:transparent; color:var(--cream); font-family:inherit; font-size:14px; outline:none;
+  }
+  .newsletter-form input::placeholder{color:rgba(250,246,239,.55);}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink); color:var(--cream); padding:80px 0 0;}
+  .footer-grid{display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr 1.2fr; gap:40px; padding-bottom:56px; border-bottom:1px solid rgba(250,246,239,.12);}
+  .foot-logo{display:flex; align-items:center; gap:10px; margin-bottom:18px;}
+  .foot-logo .logo-text{color:var(--cream);}
+  .foot-logo .logo-sub{color:rgba(250,246,239,.55);}
+  .footer-brand p{font-size:13.5px; line-height:1.7; color:rgba(250,246,239,.65); max-width:280px; margin-bottom:22px;}
+  .social-row{display:flex; gap:10px;}
+  .social-row a{width:36px; height:36px; border-radius:50%; border:1px solid rgba(250,246,239,.25); display:flex; align-items:center; justify-content:center; transition:.3s;}
+  .social-row a:hover{background:var(--gold); border-color:var(--gold);}
+  .social-row svg{width:16px; height:16px; stroke:var(--cream); fill:none; stroke-width:1.6;}
+  .foot-col h4{font-family:'Manrope',sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:20px; color:var(--gold-light);}
+  .foot-col ul{list-style:none;}
+  .foot-col li{margin-bottom:12px;}
+  .foot-col a{font-size:14px; color:rgba(250,246,239,.75); transition:.2s;}
+  .foot-col a:hover{color:var(--gold-light);}
+  .foot-bottom{display:flex; justify-content:space-between; align-items:center; padding:26px 0; font-size:12.5px; color:rgba(250,246,239,.55); flex-wrap:wrap; gap:12px;}
+  .legal-links{display:flex; gap:22px;}
+  .legal-links a{color:rgba(250,246,239,.55);}
+  .legal-links a:hover{color:var(--gold-light);}
+
+  /* =============== RESPONSIVE =============== */
+  @media (max-width:1080px){
+    .cat-grid{grid-template-columns:repeat(2,1fr);}
+    .product-grid{grid-template-columns:repeat(3,1fr);}
+    .feature-grid{grid-template-columns:1fr 1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr; row-gap:36px;}
+  }
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    section{padding:80px 0;}
+    .lookbook{min-height:420px;}
+  }
+  @media (max-width:680px){
+    .wrap{padding:0 20px;}
+    nav.wrap{padding:16px 20px;}
+    .hero{min-height:86vh;}
+    .hero-content{padding:0 20px 52px;}
+    .hero-cta{width:100%;}
+    .hero-cta .btn{flex:1;}
+    .sound-toggle{bottom:20px; right:20px; padding:9px 14px; font-size:11.5px;}
+    .cat-grid{grid-template-columns:1fr 1fr; grid-auto-rows:170px;}
+    .product-grid{grid-template-columns:1fr 1fr; gap:16px;}
+    .feature-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr; gap:34px;}
+    .newsletter{padding:48px 24px;}
+    .film{aspect-ratio:4/5; border-radius:20px;}
+    .film-copy{left:20px; right:20px; bottom:20px; flex-direction:column; align-items:flex-start;}
+    .lookbook-copy{padding:30px; max-width:100%;}
+    .testi-card{flex:0 0 82vw;}
+    .section-head{margin-bottom:34px;}
+  }
+  @media (max-width:420px){
+    .product-grid{grid-template-columns:1fr 1fr; gap:12px;}
+    .cat-grid{grid-template-columns:1fr 1fr; grid-auto-rows:150px; gap:12px;}
+    h1{font-size:36px !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">FREE SHIPPING ON ORDERS OVER $120 &nbsp;·&nbsp; NEW MENSWEAR ARRIVALS &nbsp;·&nbsp; <span>USE CODE GOLD10</span></div>
+
+<header>
+  <nav class="wrap">
+    <a href="#" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="19" stroke="#B3874F" stroke-width="1.4"/>
+        <path d="M20 8 C14 14, 14 22, 20 32 C26 22, 26 14, 20 8Z" fill="#B3874F"/>
+        <circle cx="20" cy="19" r="2.6" fill="#211d19"/>
+      </svg>
+      <span>
+        <span class="logo-text">GOLD <b>&</b> DEV</span>
+        <span class="logo-sub">Menswear</span>
+      </span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="men.html
+        ">New In</a></li>
+      <li><a href="./index.html"
+        >Women</a></li>
+      <li><a href="./story.html">Story</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+      <li><a href="./blog.html">Blog</a></li>
+      <li><a href="./skin.html">Skin care product</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#" class="icon-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </a>
+      <a href="#" class="icon-btn" aria-label="Account">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>
+      </a>
+      <a href="#" class="icon-btn" aria-label="Cart">
+        <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L4.5 3H2"/><circle cx="9" cy="19" r="1.2"/><circle cx="17" cy="19" r="1.2"/></svg>
+        <span class="cart-count">2</span>
+      </a>
+      <a href="./auth.html" class="btn btn-primary" style="padding:11px 24px;">Shop Now</a>
+      <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#new">New In</a>
+    <a href="#outerwear">Outerwear</a>
+    <a href="./contact.html">contacts</a>
+    <a href="./index.html">women</a>
+    <a href="./story.html">Our Story</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO WITH VIDEO -->
+  <section class="hero" style="padding:0;">
+    <video id="heroVideo" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=1600&q=80&auto=format&fit=crop">
+      <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <span class="eyebrow">Fall / Winter Menswear</span>
+      <h1>Tailored for<br><em>how you move.</em></h1>
+      <p>Considered menswear built on honest fabrics and clean construction — pieces that go from the office to the weekend without missing a step.</p>
+      <div class="hero-cta">
+        <a href="#products" class="btn btn-primary">Shop Best Sellers</a>
+        <a href="#outerwear" class="btn btn-outline">Shop Outerwear</a>
+      </div>
+    </div>
+    <button class="sound-toggle" id="soundToggle">
+      <svg viewBox="0 0 24 24"><path d="M5 9v6h4l5 5V4L9 9H5Z"/></svg>
+      <span id="soundLabel">Unmute</span>
+    </button>
+  </section>
+
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Free Returns Within 30 Days ✦ Built To Last ✦ Designed In-House ✦ Worn Worldwide ✦ New Drops Monthly ✦
+      Free Returns Within 30 Days ✦ Built To Last ✦ Designed In-House ✦ Worn Worldwide ✦ New Drops Monthly ✦</span>
+    </div>
+  </div>
+
+  <!-- CATEGORY GRID -->
+  <section id="new">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Shop by category</span>
+          <h2 style="margin-top:12px;">Every category, one wardrobe</h2>
+        </div>
+        <p>From tailoring to weekend layers — everything built to mix, match, and hold up to real wear.</p>
+      </div>
+
+      <div class="cat-grid reveal">
+        <div class="cat-card" id="outerwear">
+          <img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=700&q=80&auto=format&fit=crop" alt="Men's outerwear">
+          <div class="overlay"></div>
+          <div class="cat-card-content">
+            <h3>Outerwear</h3>
+            <a href="#products" class="pill-link">Explore Collection →</a>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?w=700&q=80&auto=format&fit=crop" alt="Men's denim">
+          <div class="overlay"></div>
+          <div class="cat-card-content">
+            <h3>Denim</h3>
+            <a href="#products" class="pill-link">Shop Denim →</a>
+          </div>
+        </div>
+
+        <div class="cat-card sage short">
+          <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700&q=80&auto=format&fit=crop" alt="Men's accessories">
+          <div class="cat-card-content">
+            <h3>Accessories</h3>
+            <a href="#products" class="pill-link">See the Edit →</a>
+          </div>
+        </div>
+
+        <div class="cat-card blush">
+          <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=700&q=80&auto=format&fit=crop" alt="Men's footwear">
+          <div class="cat-card-content">
+            <h3>Footwear</h3>
+            <a href="#products" class="pill-link">Shop Boots →</a>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=700&q=80&auto=format&fit=crop" alt="Men's knitwear">
+          <div class="overlay"></div>
+          <div class="cat-card-content">
+            <h3>Knitwear</h3>
+            <a href="#products" class="pill-link">Explore Collection →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" style="background:var(--cream-2); border-radius:40px; max-width:1400px; margin:0 auto;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Best sellers</span>
+          <h2 style="margin-top:12px;">Loved, worn, repeated</h2>
+        </div>
+        <p>The pieces our community keeps reordering — across every category in the men's line.</p>
+      </div>
+
+      <div class="tab-row reveal">
+        <button class="tab-btn active" data-filter="all">All</button>
+      </div>
+
+      <div class="product-grid reveal" id="productGrid">
+
+        <div class="product-card" data-cat="outerwear">
+          <div class="product-img">
+            <span class="tag new">New</span>
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUqWnJ_0JVyZrjp0aw_ASd1zhWGZ9UTUBidy6nC_R13w&s=10" alt="Quilted puffer vest">
+          </div>
+          <div class="product-info">
+            <span class="cat">Outerwear</span>
+            <h4>Quilted Puffer Vest</h4>
+            <div class="price-row"><span class="price">$118</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="outerwear">
+          <div class="product-img">
+            <span class="tag sale">-20%</span>
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrX32FepWV1F2HnpJqcDK_cfbj3KD-6Egu_TxPqJqVEg&s=10" alt="Tailored blazer">
+          </div>
+          <div class="product-info">
+            <span class="cat">Tailoring</span>
+            <h4>Charcoal Tailored Blazer</h4>
+            <div class="price-row"><span class="price"><span class="was">$210</span>$168</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="knitwear">
+          <div class="product-img">
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ-Ws2fn8Jz_J1O39p2ktorG8Qd6j43uAz85fiTESs4w&s=10" alt="Merino crewneck sweater">
+          </div>
+          <div class="product-info">
+            <span class="cat">Knitwear</span>
+            <h4>Merino Crewneck Sweater</h4>
+            <div class="price-row"><span class="price">$96</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="denim">
+          <div class="product-img">
+            <span class="tag new">New</span>
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU6tVLN9UHQkPbMmji_Sf_-e-TDTYTUAcnuWWlilNEnw&s=10" alt="Slim fit denim jeans">
+          </div>
+          <div class="product-info">
+            <span class="cat">Denim</span>
+            <h4>Slim-Fit Selvedge Jeans</h4>
+            <div class="price-row"><span class="price">$98</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="shirts">
+          <div class="product-img">
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=500&q=80&auto=format&fit=crop" alt="Stone linen shirt">
+          </div>
+          <div class="product-info">
+            <span class="cat">Shirts</span>
+            <h4>Stone Linen Shirt</h4>
+            <div class="price-row"><span class="price">$68</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="shirts">
+          <div class="product-img">
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkqTsQumdPfToCeLcB7OypWlqhHcW0uA111nqx9ip2Iw&s=10" alt="Oxford button-down shirt">
+          </div>
+          <div class="product-info">
+            <span class="cat">Shirts</span>
+            <h4>Classic Oxford Button-Down</h4>
+            <div class="price-row"><span class="price">$72</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="denim">
+          <div class="product-img">
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYhjkTm2ZNqMG292WtSY98XwN4KwV7cyJBiRj_IaQ2HQ&s=10" alt="Denim trucker jacket">
+          </div>
+          <div class="product-info">
+            <span class="cat">Denim</span>
+            <h4>Washed Denim Trucker Jacket</h4>
+            <div class="price-row"><span class="price"><span class="was">$140</span>$119</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+        <div class="product-card" data-cat="shirts">
+          <div class="product-img">
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwr0NGtJWedkx6crd6JR5eDdPUFwMZ6SB3ju-2Zojaeg&s" alt="sleeve fit shirt">
+          </div>
+          <div class="product-info">
+            <span class="cat">Shirts</span>
+            <h4>sleeve fit shirt</h4>
+            <div class="price-row"><span class="price">$72</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+         <div class="product-card" data-cat="shirts">
+          <div class="product-img">
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeDTgzqvpA1__d9b_pliMKvAI0G8DWTSDSt2wcI7nudw&s=10" alt="sleeve fit shirt">
+          </div>
+          <div class="product-info">
+            <span class="cat">Sandals</span>
+            <h4>Drend Sandala</h4>
+            <div class="price-row"><span class="price">$72</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+        
+        
+         <div class="product-card" data-cat="shirts">
+          <div class="product-img">
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="data:image/jpeg;base64,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" alt="sleeve fit shirt">
+          </div>
+          <div class="product-info">
+            <span class="cat">Shoes</span>
+            <h4>Oxford shoes</h4>
+            <div class="price-row"><span class="price">$80</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="outerwear">
+          <div class="product-img">
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPubU7ATQd_2J483cuE32_qlWQ6RTUWsEGXlRlzWNzqg&s=10" alt="Tapered cotton chinos">
+          </div>
+          <div class="product-info">
+            <span class="cat">Bottoms</span>
+            <h4>Tapered Cotton Chinos</h4>
+            <div class="price-row"><span class="price">$74</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="footwear">
+          <div class="product-img">
+            <span class="tag new">New</span>
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6aL9uuJrX3IrXqqRFpwJ9SiYRykzO2um1SPCGnZ8sNA&s=10" alt="Leather chelsea boots">
+          </div>
+          <div class="product-info">
+            <span class="cat">Footwear</span>
+            <h4>Leather Chelsea Boots</h4>
+            <div class="price-row"><span class="price">$186</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="accessories">
+          <div class="product-img">
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThzQy-Q2EtNp1yUOO_Adg-YCn3WQfr_Vt5Xc-xTm7fiQ&s=10" alt="Full-grain leather belt">
+          </div>
+          <div class="product-info">
+            <span class="cat">Accessories</span>
+            <h4>Full-Grain Leather Belt</h4>
+            <div class="price-row"><span class="price">$52</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="knitwear">
+          <div class="product-img">
+            <span class="tag sale">-15%</span>
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://images.unsplash.com/photo-1516826957135-700dedea698c?w=500&q=80&auto=format&fit=crop" alt="Half-zip knit sweater">
+          </div>
+          <div class="product-info">
+            <span class="cat">Knitwear</span>
+            <h4>Ribbed Half-Zip Sweater</h4>
+            <div class="price-row"><span class="price"><span class="was">$92</span>$78</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="shirts">
+          <div class="product-img">
+            <span class="tag sale">-25%</span>
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=500&q=80&auto=format&fit=crop" alt="Pima cotton polo">
+          </div>
+          <div class="product-info">
+            <span class="cat">Shirts</span>
+            <h4>Pima Cotton Polo</h4>
+            <div class="price-row"><span class="price"><span class="was">$58</span>$44</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="outerwear">
+          <div class="product-img">
+            <span class="tag new">New</span>
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV84pF1HyURTNbyX-AiBgzfS9WLfgIkFdXKNWOrp7G7Q&s=10" alt="Wool overcoat">
+          </div>
+          <div class="product-info">
+            <span class="cat">Outerwear</span>
+            <h4>Camel Wool Overcoat</h4>
+            <div class="price-row"><span class="price">$248</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="footwear">
+          <div class="product-img">
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpwvV4L3QTIVLh42WcUgkmK9jyPBUuWSYPfuOU-lLcSQ&s=10" alt="Minimal leather sneakers">
+          </div>
+          <div class="product-info">
+            <span class="cat">Footwear</span>
+            <h4>Minimal Leather Sneakers</h4>
+            <div class="price-row"><span class="price">$132</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="accessories">
+          <div class="product-img">
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq61PuBIbcq8njrAtlb_Tqtxnj08XEbVtRm5ODbF57UA&s=10" alt="Wool scarf">
+          </div>
+          <div class="product-info">
+            <span class="cat">Accessories</span>
+            <h4>Herringbone Wool Scarf</h4>
+            <div class="price-row"><span class="price">$44</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="denim">
+          <div class="product-img">
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5Q-fXWyLeHLw1b-FiIstTzxG3ShUl6czYN1HtM-uN0g&s=10" alt="Straight fit jeans">
+          </div>
+          <div class="product-info">
+            <span class="cat">Denim</span>
+            <h4>Straight-Fit Raw Denim</h4>
+            <div class="price-row"><span class="price">$104</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="accessories">
+          <div class="product-img">
+            <span class="tag new">New</span>
+            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z"/></svg></a>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5lNr06TU2JMLD2pvT5RfVpyIWDtvSGqGTkL5frU1fFQ&s=10" alt="Ribbed knit beanie">
+          </div>
+          <div class="product-info">
+            <span class="cat">Accessories</span>
+            <h4>Ribbed Knit Beanie</h4>
+            <div class="price-row"><span class="price">$28</span><button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="products-cta reveal">
+        <a href="#" class="btn btn-outline">View Full Collection</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND FILM -->
+  <section id="film">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Behind the collection</span>
+          <h2 style="margin-top:12px;">Watch the making of Fall '26</h2>
+        </div>
+        <p>A short film on the fabrics, fittings, and finishing that go into every piece.</p>
+      </div>
+
+      <div class="film reveal">
+        <video src="https://www.pexels.com/download/video/7653745/" controls autoplay loop muted>
+        </video>
+        <div class="film-overlay"></div>
+        <div class="film-copy">
+          <!-- <h3>Crafted in small batches, fitted for real bodies</h3> -->
+          <button class="play-btn" id="filmPlayBtn" aria-label="Play video">
+            <svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Why Gold & Dev</span>
+          <h2 style="margin-top:12px;">Built around your everyday</h2>
+        </div>
+      </div>
+      <div class="feature-grid reveal">
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg></div>
+            <span class="label">Craft</span>
+            <h3>Fabrics chosen to outlast trends, not chase them</h3>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M3 12l7 7L21 5"/></svg></div>
+            <span class="label">Guarantee</span>
+            <h3>Free 30-day returns, no questions asked</h3>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M20 12H4M4 12l6-6M4 12l6 6"/></svg></div>
+            <span class="label">Shipping</span>
+            <h3>Fast, tracked delivery to 120+ countries</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOOKBOOK -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="lookbook reveal">
+        <img src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=1400&q=80&auto=format&fit=crop" alt="Gold & Dev men's lookbook">
+        <div class="lookbook-copy">
+          <span class="eyebrow">The Autumn Edit</span>
+          <h2>Layers that carry a whole season</h2>
+          <p>Nine pieces, endless combinations. See how our stylists put the new drop together for real days, real weather, real life.</p>
+          <a href="#" class="btn btn-light">View the Lookbook</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section>
+    <div class="wrap">
+      <div class="testi-wrap reveal">
+        <div class="section-head" style="padding:0 40px;">
+          <div>
+            <span class="eyebrow">Customer stories</span>
+            <h2 style="margin-top:12px;">Worn and loved, worldwide</h2>
+          </div>
+          <p>Real fit notes from the men actually wearing it.</p>
+        </div>
+
+        <div class="testi-track">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="quote">"The overcoat is the best purchase I've made in years. It goes with everything and the wool holds up beautifully."</p>
+            <div class="testi-person">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80&auto=format&fit=crop" alt="Daniel">
+              <div><b>Daniel K.</b><span>Toronto, Canada</span></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="quote">"Finally a brand that fits true to size. The blazer looks twice the price and the returns were painless."</p>
+            <div class="testi-person">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80&auto=format&fit=crop" alt="Marcus">
+              <div><b>Marcus T.</b><span>Cape Town, SA</span></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="quote">"Ordered the chelsea boots for a wedding and got compliments all night. Shipping was fast even internationally."</p>
+            <div class="testi-person">
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&q=80&auto=format&fit=crop" alt="Kunle">
+              <div><b>Kunle A.</b><span>Lagos, Nigeria</span></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="quote">"The chinos are now in three colors in my closet. Great taper, doesn't stretch out after a few wears."</p>
+            <div class="testi-person">
+              <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=100&q=80&auto=format&fit=crop" alt="Femi">
+              <div><b>Femi O.</b><span>Abuja, Nigeria</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="newsletter reveal">
+        <h2>Get 10% off your first order, plus early access to new drops.</h2>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓';">
+          <input type="email" placeholder="Enter your email address" required>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="about">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="foot-logo">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="19" stroke="#B3874F" stroke-width="1.4"/>
+            <path d="M20 8 C14 14, 14 22, 20 32 C26 22, 26 14, 20 8Z" fill="#B3874F"/>
+            <circle cx="20" cy="19" r="2.6" fill="#211d19"/>
+          </svg>
+          <span>
+            <span class="logo-text">GOLD <b>&</b> DEV</span>
+            <span class="logo-sub">Menswear</span>
+          </span>
+        </div>
+        <p>Considered clothing for men who want quality that lasts — designed for the way you actually live, worn in over 120 countries.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 17c1-3 1.3-6 2-9a2.5 2.5 0 1 1 4 2c0 2-1 4-3 4"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3-3.46"/><path d="M14 4c.3 2 2 3.6 4 3.8"/></svg></a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#outerwear">Outerwear</a></li>
+          <li><a href="#products">Best Sellers</a></li>
+          <li><a href="#new">New Arrivals</a></li>
+          <li><a href="#">Sale</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns & Exchanges</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Wholesale</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Stay in touch</h4>
+        <p style="font-size:14px; line-height:1.6; margin-bottom:16px;">Subscribe for early access to drops and private sales.</p>
+        <div style="display:flex; gap:8px;">
+          <input type="email" placeholder="Email" style="flex:1; min-width:0; padding:12px 14px; border-radius:100px; border:1px solid rgba(250,246,239,.25); background:transparent; color:#fff; font-family:inherit; font-size:13px; outline:none;">
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 Gold & Dev. All rights reserved.</span>
+      <div class="legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile menu toggle
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  // tab buttons - filter products
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('#productGrid .product-card').forEach(card => {
+        const cats = card.dataset.cat || '';
+        card.style.display = (filter === 'all' || cats.includes(filter)) ? '' : 'none';
+      });
+    });
+  });
+
+  // wishlist heart toggle
+  document.querySelectorAll('.wish-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const svg = btn.querySelector('svg');
+      const active = svg.getAttribute('fill') === '#B3874F';
+      svg.setAttribute('fill', active ? 'none' : '#B3874F');
+      svg.style.stroke = active ? '#211d19' : '#B3874F';
+    });
+  });
+
+  // add to cart bump
+  const cartCount = document.querySelector('.cart-count');
+  let count = 2;
+  document.querySelectorAll('.add-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      count++;
+      cartCount.textContent = count;
+      cartCount.style.transform = 'scale(1.4)';
+      setTimeout(() => cartCount.style.transform = 'scale(1)', 200);
+    });
+  });
+
+  // scroll reveal animation
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // hero video sound toggle
+  const heroVideo = document.getElementById('heroVideo');
+  const soundToggle = document.getElementById('soundToggle');
+  const soundLabel = document.getElementById('soundLabel');
+  soundToggle.addEventListener('click', () => {
+    heroVideo.muted = !heroVideo.muted;
+    soundLabel.textContent = heroVideo.muted ? 'Unmute' : 'Mute';
+  });
+
+  // brand film play/pause
+  const filmVideo = document.getElementById('filmVideo');
+  const filmPlayBtn = document.getElementById('filmPlayBtn');
+  filmPlayBtn.addEventListener('click', () => {
+    if (filmVideo.paused) {
+      filmVideo.muted = false;
+      filmVideo.play();
+      filmPlayBtn.innerHTML = '<svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>';
+    } else {
+      filmVideo.pause();
+      filmPlayBtn.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>';
+    }
+  });
+</script>
+
+</body>
+</html>

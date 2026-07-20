@@ -1,0 +1,2311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joseph Gold — ModernEssentials · Skincare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset & Base ── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --cream: #faf6ef;
+            --cream2: #f3efe8;
+            --ink: #1e1a16;
+            --gold: #b3874f;
+            --gold-light: #c9a87c;
+            --muted: #7a6b5c;
+            --border: #e6ddd2;
+            --radius: 28px;
+            --shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.10);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+        .wrap {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        /* ── Topbar ── */
+        .topbar {
+            background: var(--ink);
+            color: #ece6dc;
+            font-size: 11px;
+            letter-spacing: 0.4px;
+            padding: 8px 16px;
+            text-align: center;
+            font-weight: 500;
+            border-bottom: 1px solid #3d352b;
+        }
+        .topbar span {
+            color: var(--gold-light);
+        }
+
+        /* ── Header ── */
+        header {
+            background: rgba(250, 246, 239, 0.92);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav.wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        .logo-mark {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+        }
+        .logo-text {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 20px;
+            letter-spacing: -0.3px;
+            color: var(--ink);
+        }
+        .logo-text b {
+            font-weight: 400;
+            color: var(--gold);
+        }
+        .logo-sub {
+            display: block;
+            font-size: 8px;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: -2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .nav-links a {
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 40px;
+            transition: background 0.2s;
+        }
+        .icon-btn:hover {
+            background: var(--border);
+        }
+        .icon-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--ink);
+            stroke-width: 1.8;
+            fill: none;
+        }
+        .cart-count {
+            background: var(--gold);
+            color: #fff;
+            border-radius: 30px;
+            padding: 0 8px;
+            font-size: 10px;
+            font-weight: 700;
+            margin-left: -6px;
+            transition: 0.2s;
+            min-width: 18px;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 26px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 13px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn-primary {
+            background: var(--ink);
+            color: var(--cream);
+        }
+        .btn-primary:hover {
+            background: #3d352b;
+            transform: scale(0.97);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--ink);
+            color: var(--ink);
+        }
+        .btn-outline:hover {
+            background: var(--ink);
+            color: var(--cream);
+        }
+        .btn-light {
+            background: var(--cream);
+            color: var(--ink);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+        .btn-light:hover {
+            background: #fff;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #fff;
+        }
+        .btn-gold:hover {
+            background: var(--gold-light);
+            transform: scale(0.97);
+        }
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            padding: 6px;
+        }
+        .burger span {
+            width: 24px;
+            height: 2px;
+            background: var(--ink);
+            border-radius: 4px;
+            transition: 0.2s;
+        }
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: var(--cream);
+            padding: 16px 24px 24px;
+            gap: 10px;
+            border-top: 1px solid var(--border);
+        }
+        .mobile-menu.open {
+            display: flex;
+        }
+        .mobile-menu a {
+            font-weight: 600;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            padding: 28px 0 0;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        .hero-copy .eyebrow {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+        }
+        .hero-copy h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            line-height: 1.08;
+            margin: 14px 0 18px;
+            font-weight: 500;
+        }
+        .hero-copy h1 em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--gold);
+        }
+        .hero-copy p {
+            font-size: 15px;
+            color: #4d4338;
+            max-width: 420px;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        .hero-cta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 36px;
+        }
+        .hero-stats div b {
+            font-size: 20px;
+            display: block;
+        }
+        .hero-stats div span {
+            font-size: 12px;
+            color: var(--muted);
+        }
+        .hero-visual {
+            position: relative;
+        }
+        .hero-img-main img {
+            width: 100%;
+            height: 440px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .hero-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 14px;
+            text-align: center;
+            line-height: 1.2;
+            box-shadow: 0 8px 24px rgba(179, 135, 79, 0.35);
+        }
+        .hero-floating {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            padding: 10px 16px 10px 10px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+        .hero-floating .dot img {
+            width: 34px;
+            height: 34px;
+            border-radius: 40px;
+            object-fit: cover;
+            border: 2px solid var(--cream);
+        }
+        .hero-floating p {
+            font-size: 12px;
+            font-weight: 600;
+            max-width: 150px;
+        }
+
+        /* ── Marquee ── */
+        .marquee {
+            background: var(--ink);
+            padding: 10px 0;
+            margin-top: 32px;
+            overflow: hidden;
+        }
+        .marquee-track {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 32s linear infinite;
+            color: #ece6dc;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.6px;
+        }
+        .marquee-track span {
+            padding-right: 48px;
+        }
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ── Section Head ── */
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 20px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .section-head .eyebrow {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+        }
+        .section-head h2 {
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            line-height: 1.15;
+            margin-top: 6px;
+        }
+        .section-head p {
+            max-width: 400px;
+            color: #4d4338;
+            font-size: 14px;
+        }
+
+        /* ── Category Grid ── */
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .cat-card {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 1/1.2;
+            background: var(--cream2);
+        }
+        .cat-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        .cat-card:hover img {
+            transform: scale(1.05);
+        }
+        .cat-card .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.35) 0%, transparent 65%);
+        }
+        .cat-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 20px 20px 24px;
+            color: #fff;
+            width: 100%;
+        }
+        .cat-card-content h3 {
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+            font-size: 22px;
+        }
+        .pill-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            padding: 5px 16px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 6px;
+            transition: 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .pill-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .cat-card.sage {
+            background: #d6ded6;
+        }
+        .cat-card.blush {
+            background: #ead9d4;
+        }
+        .cat-card.sage .cat-card-content h3,
+        .cat-card.blush .cat-card-content h3 {
+            color: var(--ink);
+        }
+        .cat-card.sage .pill-link,
+        .cat-card.blush .pill-link {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--ink);
+            border-color: rgba(0, 0, 0, 0.06);
+        }
+        .cat-card.sage .pill-link:hover,
+        .cat-card.blush .pill-link:hover {
+            background: rgba(0, 0, 0, 0.12);
+        }
+        .cat-card:first-child {
+            grid-column: 1/3;
+            grid-row: 1/3;
+        }
+        .cat-card:last-child {
+            grid-column: 3/5;
+        }
+
+        /* ── Products Section ── */
+        #products {
+            background: var(--cream2);
+            border-radius: 40px;
+            padding: 44px 0;
+            margin: 32px 0;
+        }
+        .tab-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+        .tab-btn {
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: 0.2s;
+            color: #4d4338;
+            background: transparent;
+            border: none;
+        }
+        .tab-btn.active {
+            background: var(--ink);
+            color: var(--cream);
+        }
+        .tab-btn:hover:not(.active) {
+            background: var(--border);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 16px;
+            transition: 0.25s;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.08);
+        }
+        .product-img {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            background: var(--cream2);
+        }
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 14px;
+            border-radius: 40px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .tag.sale {
+            background: #c94f4f;
+        }
+        .tag.new {
+            background: #2b6f6f;
+        }
+        .tag.bestseller {
+            background: var(--gold);
+        }
+        .wish-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            width: 32px;
+            height: 32px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+        }
+        .wish-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--ink);
+            fill: none;
+        }
+        .product-info {
+            padding-top: 12px;
+        }
+        .product-info .cat {
+            font-size: 10px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+        }
+        .product-info h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 4px 0 6px;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .price {
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .was {
+            text-decoration: line-through;
+            font-weight: 400;
+            color: var(--muted);
+            margin-right: 6px;
+            font-size: 13px;
+        }
+        .add-btn {
+            border: 1px solid var(--border);
+            width: 34px;
+            height: 34px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            background: #fff;
+        }
+        .add-btn:hover {
+            background: var(--ink);
+            border-color: var(--ink);
+        }
+        .add-btn:hover svg {
+            stroke: #fff;
+        }
+        .add-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--ink);
+            stroke-width: 2;
+        }
+        .products-cta {
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        /* ── Features ── */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .feature-card {
+            background: var(--cream2);
+            border-radius: 32px;
+            padding: 28px 32px;
+            transition: 0.2s;
+        }
+        .feature-card:hover {
+            background: var(--border);
+        }
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--gold);
+            stroke-width: 1.8;
+            fill: none;
+            margin-bottom: 12px;
+        }
+        .feature-card .label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--gold);
+        }
+        .feature-card h3 {
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+            font-size: 20px;
+            margin-top: 4px;
+        }
+
+        /* ── Lookbook / Video ── */
+        .lookbook {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        .lookbook video {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+        }
+        .lookbook-copy {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 32px 40px;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.55), transparent);
+            color: #fff;
+            width: 100%;
+        }
+        .lookbook-copy .eyebrow {
+            color: var(--gold-light);
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+        }
+        .lookbook-copy h2 {
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+        }
+        .lookbook-copy p {
+            max-width: 420px;
+            font-size: 14px;
+            opacity: 0.8;
+            margin: 6px 0 14px;
+        }
+
+        /* ── Testimonials ── */
+        .testi-wrap {
+            background: var(--cream2);
+            border-radius: 40px;
+            padding: 40px 0;
+        }
+        .testi-track {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 0 24px;
+        }
+        .testi-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 24px;
+        }
+        .testi-stars {
+            color: var(--gold);
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+        .quote {
+            font-size: 14px;
+            font-weight: 500;
+            margin: 10px 0 14px;
+            line-height: 1.5;
+        }
+        .testi-person {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testi-person img {
+            width: 42px;
+            height: 42px;
+            border-radius: 40px;
+            object-fit: cover;
+        }
+        .testi-person b {
+            display: block;
+            font-size: 13px;
+        }
+        .testi-person span {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        /* ── Newsletter ── */
+        .newsletter {
+            background: var(--ink);
+            border-radius: 40px;
+            padding: 44px 52px;
+            color: var(--cream);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 28px;
+        }
+        .newsletter h2 {
+            font-family: 'Fraunces', serif;
+            font-weight: 400;
+            font-size: clamp(1.4rem, 2.8vw, 2rem);
+            max-width: 520px;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            flex: 1;
+            min-width: 240px;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 60px;
+            border: none;
+            background: #3d352b;
+            color: var(--cream);
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+        }
+        .newsletter-form input::placeholder {
+            color: #a09385;
+        }
+        .newsletter-form button {
+            background: var(--gold);
+            color: #fff;
+            border: none;
+            border-radius: 60px;
+            padding: 12px 32px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+        .newsletter-form button:hover {
+            background: var(--gold-light);
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: var(--ink);
+            color: #ece6dc;
+            padding: 44px 0 20px;
+            margin-top: 40px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1.2fr;
+            gap: 32px;
+        }
+        .foot-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .foot-logo .logo-text {
+            color: #ece6dc;
+        }
+        .foot-logo .logo-sub {
+            color: #a09385;
+        }
+        .footer-brand p {
+            font-size: 13px;
+            max-width: 300px;
+            color: #a09385;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+        .social-row {
+            display: flex;
+            gap: 14px;
+        }
+        .social-row a svg {
+            width: 20px;
+            height: 20px;
+            stroke: #a09385;
+            fill: none;
+            stroke-width: 1.6;
+        }
+        .social-row a:hover svg {
+            stroke: #ece6dc;
+        }
+        .foot-col h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #ece6dc;
+        }
+        .foot-col ul {
+            list-style: none;
+        }
+        .foot-col ul li {
+            margin-bottom: 8px;
+        }
+        .foot-col ul a {
+            color: #a09385;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+        .foot-col ul a:hover {
+            color: #ece6dc;
+        }
+        .foot-bottom {
+            border-top: 1px solid #3d352b;
+            padding-top: 20px;
+            margin-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 12px;
+            color: #7a6b5c;
+        }
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+        .legal-links a {
+            color: #7a6b5c;
+            transition: 0.2s;
+        }
+        .legal-links a:hover {
+            color: #ece6dc;
+        }
+
+        /* ── Account Menu ── */
+        .account-menu {
+            position: absolute;
+            top: 64px;
+            right: 20px;
+            background: #fff;
+            border-radius: 24px;
+            padding: 16px 0;
+            width: 220px;
+            box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.15);
+            display: none;
+            flex-direction: column;
+            z-index: 200;
+        }
+        .account-menu.open {
+            display: flex;
+        }
+        .account-menu .who {
+            padding: 0 16px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .account-menu .who b {
+            display: block;
+        }
+        .account-menu .who span {
+            font-size: 12px;
+            color: var(--muted);
+        }
+        .account-menu a {
+            padding: 8px 16px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: 0.15s;
+        }
+        .account-menu a:hover {
+            background: var(--cream2);
+        }
+        .account-menu .logout {
+            padding: 8px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--gold);
+            border-top: 1px solid var(--border);
+            margin-top: 4px;
+            width: 100%;
+        }
+
+        /* ── Auth Modal ── */
+        .auth-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(6px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .auth-overlay.open {
+            display: flex;
+        }
+        .auth-modal {
+            background: var(--cream);
+            max-width: 880px;
+            width: 100%;
+            border-radius: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            max-height: 92vh;
+            position: relative;
+        }
+        .auth-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            border: none;
+            cursor: pointer;
+        }
+        .auth-close svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--ink);
+            stroke-width: 2;
+        }
+        .auth-visual {
+            background: var(--ink);
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            color: #fff;
+        }
+        .auth-visual img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 24px;
+            margin-bottom: 20px;
+        }
+        .auth-visual-copy .eyebrow {
+            color: var(--gold-light);
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .auth-visual-copy h3 {
+            font-family: 'Fraunces', serif;
+            font-weight: 400;
+            font-size: 26px;
+            margin: 6px 0 8px;
+        }
+        .auth-visual-copy p {
+            font-size: 13px;
+            opacity: 0.7;
+        }
+        .auth-panel {
+            padding: 36px 32px;
+            overflow-y: auto;
+        }
+        .auth-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            background: var(--border);
+            border-radius: 60px;
+            padding: 4px;
+        }
+        .auth-tab {
+            flex: 1;
+            padding: 10px 0;
+            font-weight: 700;
+            font-size: 13px;
+            border-radius: 60px;
+            transition: 0.2s;
+            color: #4d4338;
+            background: transparent;
+            border: none;
+        }
+        .auth-tab.active {
+            background: #fff;
+            color: var(--ink);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        .auth-form.hidden {
+            display: none;
+        }
+        .auth-head {
+            margin-bottom: 20px;
+        }
+        .auth-head .eyebrow {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .auth-head h2 {
+            font-family: 'Fraunces', serif;
+            font-weight: 400;
+            font-size: 24px;
+        }
+        .auth-head p {
+            font-size: 13px;
+            color: #4d4338;
+        }
+        .field {
+            margin-bottom: 14px;
+        }
+        .field label {
+            font-weight: 600;
+            font-size: 13px;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .field-input {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border: 1.5px solid var(--border);
+            border-radius: 60px;
+            padding: 0 16px;
+            transition: 0.2s;
+        }
+        .field-input:focus-within {
+            border-color: var(--gold);
+        }
+        .field-input.error {
+            border-color: #c94f4f;
+        }
+        .field-input input {
+            border: none;
+            padding: 12px 0;
+            background: transparent;
+            width: 100%;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+        }
+        .toggle-pass {
+            padding: 4px;
+        }
+        .toggle-pass svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--muted);
+        }
+        .field-error {
+            color: #c94f4f;
+            font-size: 12px;
+            display: none;
+            margin-top: 4px;
+        }
+        .field-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 12px 0 16px;
+            font-size: 13px;
+        }
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .forgot-link {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .auth-submit {
+            width: 100%;
+            padding: 14px;
+            font-size: 15px;
+            margin-top: 4px;
+        }
+        .auth-divider {
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+            margin: 16px 0;
+            position: relative;
+        }
+        .auth-divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: var(--border);
+        }
+        .auth-divider::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: var(--border);
+        }
+        .social-auth {
+            display: flex;
+            gap: 12px;
+        }
+        .social-auth button {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 60px;
+            padding: 10px 0;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .auth-switch {
+            text-align: center;
+            font-size: 13px;
+            margin-top: 16px;
+        }
+        .auth-switch button {
+            color: var(--gold);
+            font-weight: 700;
+        }
+        .auth-toast {
+            background: var(--ink);
+            color: var(--cream);
+            padding: 10px 16px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            margin-bottom: 12px;
+            display: none;
+        }
+        .auth-toast.show {
+            display: flex;
+        }
+        .auth-toast.error {
+            background: #c94f4f;
+        }
+        .auth-toast svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+        }
+
+        /* ── Reveal Animation ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            .footer-grid .footer-brand {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .hero-img-main img {
+                height: 340px;
+            }
+            .cat-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .cat-card:first-child {
+                grid-column: auto;
+                grid-row: auto;
+            }
+            .cat-card:last-child {
+                grid-column: auto;
+            }
+            .auth-modal {
+                grid-template-columns: 1fr;
+                max-height: 95vh;
+            }
+            .auth-visual {
+                display: none;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                display: none;
+            }
+            .burger {
+                display: flex;
+            }
+            .nav-actions .btn {
+                display: none;
+            }
+            .hero-floating {
+                display: none;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .newsletter {
+                flex-direction: column;
+                padding: 32px 24px;
+                text-align: center;
+            }
+            .newsletter-form {
+                width: 100%;
+            }
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .topbar {
+                font-size: 10px;
+                padding: 6px 10px;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .lookbook video {
+                height: 240px;
+            }
+            .lookbook-copy {
+                padding: 20px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .testi-track {
+                grid-template-columns: 1fr;
+            }
+            .cat-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-stats {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+            .hero-img-main img {
+                height: 260px;
+            }
+            .section-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .auth-panel {
+                padding: 24px 18px;
+            }
+            .social-auth {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── TOPBAR ─── -->
+    <div class="topbar">
+        FREE SHIPPING ON ORDERS OVER $120 &nbsp;·&nbsp; NEW GLOW SERUM DROP &nbsp;·&nbsp; <span>USE CODE GLOW15</span>
+    </div>
+
+    <!-- ─── HEADER ─── -->
+    <header>
+        <nav class="wrap">
+            <a href="#" class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUWyY7d3yAK8OWP2oyBtJTH8BWEkLigaLAIj2jiuq69Q&s" alt="" width="30%" style="border-radius: 50%; border: 2px solid #B3874F; padding: 2px; margin-right: 10px; height: 50px;" />
+                <!-- <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="19" stroke="#B3874F" stroke-width="1.4" />
+                    <path d="M20 8 C14 14, 14 22, 20 32 C26 22, 26 14, 20 8Z" fill="#B3874F" />
+                    <circle cx="20" cy="19" r="2.6" fill="#faf6ef" />
+                </svg> -->
+                <span>
+                    <span class="logo-text">GOLD <b>&</b> DEV</span>
+                    <span class="logo-sub"><strong>Joseph Gold Modern Skincare Co.</strong></span>
+                </span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="./men.html">Men</a></li>
+                <li><a href="./index.html">Women</a></li>
+                <li><a href="./contact.html">Contacts</a></li>
+                <li><a href="./story.html">Our Story</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="#" class="icon-btn" aria-label="Search">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                </a>
+                <a href="#" class="icon-btn" id="accountBtn" aria-label="Account">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6" /></svg>
+                </a>
+                <a href="#" class="icon-btn" aria-label="Cart">
+                    <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z" /><path d="M6 6L4.5 3H2" /><circle cx="9" cy="19" r="1.2" /><circle cx="17" cy="19" r="1.2" /></svg>
+                    <span class="cart-count">3</span>
+                </a>
+                <a href="#" id="shopNowBtn" class="btn btn-primary" style="padding:10px 24px;">Shop Now</a>
+                <button class="burger" id="burgerBtn" aria-label="Menu"><span></span></button>
+            </div>
+        </nav>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <!-- <a href="./auth.html">Shop</a> -->
+            <a href="#new">New In</a>
+            <a href="#bestsellers">Best Sellers</a>
+            <a href="#about">Our Story</a>
+            
+        </div>
+    </header>
+
+    <!-- ─── MAIN ─── -->
+    <main>
+
+        <!-- ── HERO ── -->
+        <section class="hero" style="padding-bottom:0;">
+            <div class="wrap">
+                <div class="hero-grid">
+                    <div class="hero-copy reveal">
+                        <span class="eyebrow">Spring Glow Edit</span>
+                        <h1>Your skin <em>deserves</em><br />clean luxury</h1>
+                        <p>Vegan, dermatologist-tested skincare for the modern girl — formulated to brighten, hydrate, and protect.</p>
+                        <div class="hero-cta">
+                            <a href="./auth.html" class="btn btn-primary">Shop Best Sellers</a>
+                            <a href="#new" class="btn btn-outline">New Drops</a>
+                        </div>
+                        <div class="hero-stats">
+                            <div><b>14K+</b><span>Happy Customers</span></div>
+                            <div><b>4.9★</b><span>Average Rating</span></div>
+                            <div><b>70+</b><span>Countries</span></div>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual reveal">
+                        <div class="hero-img-main">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWrlplZdos8PCZ-BEyOqUuWsvaKTvv-o1Q8irPbdpXVQ&s=10" alt="Skincare routine" />
+                        </div>
+                        <div class="hero-badge">New<br />Serum</div>
+                        <div class="hero-floating">
+                            <div class="dot"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80&auto=format&fit=crop" alt="customer" /></div>
+                            <p>"My skin has never glowed like this."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="marquee">
+                <div class="marquee-track">
+                    <span>Free Returns ✦ Vegan &amp; Cruelty-Free ✦ Dermatologist Tested ✦ Glow Guaranteed ✦ New Drops Monthly ✦ Free Returns ✦ Vegan &amp; Cruelty-Free ✦ Dermatologist Tested ✦ Glow Guaranteed ✦ New Drops Monthly ✦</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── SHOP BY CATEGORY ── -->
+        <section id="shop" style="padding-top:28px;">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Shop by concern</span>
+                        <h2>Find your glow routine</h2>
+                    </div>
+                    <p>From hydration to brightening — clean formulas for every skin type.</p>
+                </div>
+
+                <div class="cat-grid reveal">
+                    <div class="cat-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDPVkPu0XEwQAYIpz7pE3dRNDOLFRxzE5Cr088HVRbOA&s=10" alt="Hydration" width="70%">
+                        <div class="overlay"></div>
+                        <div class="cat-card-content">
+                            <h3>Hydration</h3>
+                            <a href="#bestsellers" class="pill-link">Shop now →</a>
+                        </div>
+                    </div>
+                    <div class="cat-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg72kurR51ILd5p4z5D1lCwtERPpPkn2orkjg1ThWheA&s=10" alt="Brightening" />
+                        <div class="overlay"></div>
+                        <div class="cat-card-content">
+                            <h3>Brightening</h3>
+                            <a href="#bestsellers" class="pill-link">Shop now →</a>
+                        </div>
+                    </div>
+                    <div class="cat-card sage">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWICK3GvBFkCyh-yP0gkfVNXgAAN_5FH4X5gj7j_ua3w&s=10" alt="serum">
+                        <div class="cat-card-content">
+                            <h3>Serums</h3>
+                            <a href="#bestsellers" class="pill-link">See the edit →</a>
+                        </div>
+                    </div>
+                     <div class="cat-card">
+                        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0PDg4PDg4ODQ0NDQ4NDQ0NDQ8NDw4NFhEWFhURFRUYHS0gGRolGxUVITEhJSkrOi4uFx8zRDMtNygtLisBCgoKDg0OGxAQGC0gHSIwKystLi0tLS0tLS0rLy4tKy0tLS0tKystKy0tKystLSsrLy0uLystLS0tLS0tLS0rL//AABEIAOEA4QMBEQACEQEDEQH/xAAbAAEAAwEBAQEAAAAAAAAAAAAAAQMEBQIGB//EADsQAAIBAgMFBQUFCAMBAAAAAAABAgMRBBIhBRMiMUFRYXGBkQYUMlKhM3KxwfAVI0JTkqLR4UNishb/xAAbAQEAAgMBAQAAAAAAAAAAAAAAAQMCBAUGB//EADkRAQABAwEEBwcDAgYDAAAAAAABAgMRBBIhMVEFEzJBYZGxInGBocHR8EJS4RTxBhUjM2KiJDRy/9oADAMBAAIRAxEAPwD9kNVYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASAAAAAACAJAAAAAAAAAAAAAAAAAAEASAAAAAAAAAAAAAAAHly1LYojDHKMxPVwZM46uDJn7h1cGTO+wdXBkzjq4MmcdXBkzDq4MmYdXBl5lVaHVwZWFLJIAAAAAAAAAAAAAAAAAAAAORi5SjVkszs7Nas8jqtRdta2u3Nc4nfG+e9vW6YmiJwrzy+aXqzLr7v7585Ts08jPL5perHX3f3z5ybNPIzy+aXqyevu/vnzk2aeRvJfNL+pjr7v7585NmnkbyXzS9WT19398+co2aeRvJfNL1ZPXXP3T5ybMcjeS+Z+rJ665+6fOTZjkjeS+Z+rJ625+6fOTZjkyYitKUowUpayS0b5t2NS9qLtd2m1TXPGO+e9ZTRTETVMPpj2TmpAAAAAAAAAAAAAAAAAAAABzNqw1Uu6x4/8AxBa2b9NyO+P7fVu6afZwyxd1cqs3NuiKlsxiQtQAQSBKAkDKB4qzypv9XMblcW6ZqlMRmcM2zI5sRTv0lmflqa3RdHWaunPPLO/OLcvqj2zlgAAAAAAAAAAJAgAAAAAAAAMuPheHhqcHp61t2onlv8v4mWxp6sVOTTdnbt/E8xo7uzVs825VCxnUYIJQujRg3beK2W97dew37emszVib0YxnPjy+HmqmurHZFShaP7xLN8Wnw6ExprMxRPWxGePh+cN5t1b/AGVDNPC1DMoGHF1Lu3Rfic3V3NqrZjhHqutxuy1+z0L1XLsi/wBfU6fQVvN2a+UKdXPs4fRHqXPAAAAAAAAAEAeiQAgAAAEAAAAV1loaPSFO1bjPP1iVlud7iVY2b7mfP5pm3VNPfE+jpROYe4u6udm1Xt0xUqmMShlqGhS1fHH7O18n08e86lNcTXM9ZHYxnZ+WOfj8lON3Dv5ohK2744qylzhfL49ot17PVT1kRiJ/Tw9/MmM7W75sxoLldaeVN+niY3bnV0TUmmMy5s2cZsu77PU7Rk+1L6v/AEer6Et7NuZ/N/8AZoaqd+HYO21AAAAAAAAABAHokAAAABAAAAA81eT8n9TV1sZs1eGJ8piWVHacnGwtLxPDdI29i9nnv+joWpzSz0nrYaK5iZonvZVx3vcjpQreaG2acrSjUpvPCGVPhdpWy6dvHHT/ALI6sarU265qmmM42eHLP8+Hkp6uiYx8XmW2KaUeODy5Yq3F8TjFf+o+q7RTqdRimIpj2YnG7w/gm3Rv8UQqKSUk7xdnGSaalFq6at0NGYmJ38VzJi5627PxObrLmatmO5dbjdllepqxGZxCx9RsiFoP71vJJHt+j6Nm3j4eUOXfnNTebylAACQIAkCAAEgAJJQAAASAAAEAAImrprtTRVfo27VVPOJj5JpnEufjY3in+rM8Z0lHWWqbsfkT+Q3rU4nDnPR3ORRVNMxMdy9cd2mYmMwpYls2gkkouyy5VvJ6OOXK1ro1kjr3G119c78/KO/P3ljswmngaUbZYtJOLSzzazRy2dm+fDHXu8RN2urjPyjv/unZh7jGNOCjFWjCKjFc7RSskYXLmImur3piO5z5y+pw5mZnMtmHrDRvOPc7+hs6Sjau0+fkiucUvqdmq1KPe5P+5r8j2mjjFmPj6uXd7TSbKsAAAAAAAAAAPRKAAACQIAkAAAAHJ2rX3VCU7J5ZQi8zskt4ot+S1PL0aaL9qbMd21Ee+nOPRtbWJy+e/wDocG6depvJwjhVGVeNWhWo1KcJfDJ05xUsr1s7dH2HC/y+/FVFGIma+GJiYnHGMxMxmOTZ6ynf4L8JtSNWVFQbUasq6Sq0asJVFBJ5oXtaOvNrVcjp6WzNNqqKuNOOExOM8+O/w7u9hVVmYw9LbFBuNt5lnUVKnU3Ut3OebLaMuut9e43f6S5GeGYjMxnfEe5jtwzw2xGMq6qpqNHEOkpwpzcIwyxs5y5XvJ/Qu/pJmKdjjMZxMxnO/gjb45U43bMViZ4aUZRUKCrzqNNRjG8tZPlGPC7Pq0+w0dZYn+npqpntTjHlw8czwWW6o2phycB7V7OxNXc0cTGdV3UYuFSCnbnklJJS5dDUvdGaqzR1ldGI98Tj34ncspvUVTiJfR7PjrJ9yXqZ9H076qvh5l2eEPqMGrUqfbki34tXZ67TRMWaM8oc252pWlzAAAAAAAAAAAPRKAAACQIAASAAAHN2jh5VKc4QcVLewknK+XScZ628DgWaot6i5E8Iqq/7Rn6r53xD4b2m2ZUVLaeJxUqVN1cPSw0IUM9aMKFOrKSlJyUXKTdR6W0058zmWLtFGpt6ezEzs1VVb8RmZjuxnEREfHwXzEzTNUuxicLfF4Ss6kYQpRxNN05aOo6qgo2fdkfqafR+o2KK7eM7Wzv5Yz65W105xPJzY06iWHoXnGlRxUJJVcO6LjThJviq5nCWnLLzuu89PtUTNdzdmqmeFWd88oxmPHPBrb90N+I2Y3SxdPeRXvVWVZSa0grQ0euvwc+817eoxct1bPZjHr92c07pjm+d9sKFJSxmJr4inRwuJwKwVS8ZSqJp1HCVOz4m3P4bdDS02oqu3KLduiaqqa9qOWN0Tnlw4+KyuiIiZmd0xh8hsGvWxr2dhK0aeFhsnd4yc55qdSrSh8DhGSVo2y5pdeenI6eroo00Xr1EzVN3NOI3xEzxzMd/KPgqtzNezTO7Z3v1jAVIyoKdOUZxqJyhOElKMlZ2aa5rQ5di3VbsTExirfx8P7L65ian1sY2SXYkj1kRiMOZKSQAACBAAAAAALgeiQAAAgABIAAAAObtRT3ddQzZnBNKPxNdbd9rnCjFPSFyKuE7M/LHrC/9EfF8X7TYGm8PtH3TDVkq1HDPgjPJWqqdnkpc8yilmklrdc7aat+uqjW2ar1cd/HGYjHfVwxPdGd2/msp30TiHM9oMHN4zFyrUqlaFajShg3TwEsbaKi89OM07UZZ+LNLKneLvw6auivUxp7cW6opmmZmrNexvzumY41RjdiM98Y3rK49qcx8s/2dupSqOVBVKUp5cHCDrOh7zN1f44PXJB6JuTWvbY6WnvUV25roqiM1ZxnZjHrPu+TCqJicSzUsHKVPARq0ZuNOliKdSNSDspWWVST6aadtkZ6zVRZpvVUVRmqacYnzx9U0UbU0xMOP7ebLr1qWFqYekqzwWJhXeF0W9pq3Cl15Wt2N+D5XRGpt2666btWzt0zG1yn8+eFt+iZiJiM4l897TTr7Uye67OxuHxFKFVVK+Jh7st1KElKgtePNe1tOb6NnT0MW9Bnrb1FVM4xFPtb87qvDH5viFVzN3s0zE+O5+l+zkIrB4OnGnKioUqFF0pXzQayRcXfV9deo1FMxcimZzmY3881R/JRPs5/OD7U7zSQAAAAAAAQIAAAPRIAABIAABAAAAGap9p4w/M89rY2ekI8aPSWxR2PiyY9cn4o4/S1G6mr3wvsy50zkQ2HBx8cQsRN7meJoToUoUI060KO4rqc885NtNXUqfFHM1kenb3Oj9XbtWopmrZnMzO6ZzGIxjdjundOI38VVdEzLJtTCYqpHHShmhUlXgsM1V1lhclB1Ix4rRlJxqxvw9NVzLJ1tquu1E9mInO79WasTO7fjNM98e8i3VETz+m5hlhcTGm1GnUyTxcJOnJpbqiqVm4041dYuaXBn5tyt0Ii7amvM1RmKZ385zzmnjjv2fDPey2ascO/87/qow2BxtSFKNR4mEoYfHJWruD3/ALzF4e+WTzWhyTbVk07l9Nen67FOzMVVW+7u2fb4xu38eHgxmKtnfndE/wAPvNnwlvlFuTSxEMmduTyqGZ6vpe5vTiq/bxzjh4bU/ZVwoq+P0fTncaSAAAAAAAAAAAAAAAAEgABIAAAGav8AaU++6PPdK+zrLFXPaj8819rsSpxq4X3NM5/SdGbEzymJ+n1XWp9pyajV7XV3eyvqzz8RLaZpyXar9lyyIlKic1e11dq6V9WtNfqvUsiJ4pUykvz8jPCVuCV6ke67+htaKnN6GNyfZdfAq+Ipdzqy/ssdvTxnV0e+qflENW5utz8PV3z0LRCBAAAAAAAAAAAAAAAAAAAASBAGfGc4Psl/g8/077M2a+VX2+y+x3w84lcMvBlGtpzZrjwn5LLc74fL7ZpQkkrU5VbNQhUqON4NpTsk1fT8jz+lqqpnvinvxHf3NmqHMlQg5x/c0lFO999d8Tetr2fP6+Rt7dWzPtT5cvh+fMiN/BVWim3eFGVtKbVd33KknHM73ve769OwypnEcZjnu78b+783sl2ChBRvFRTlZyyyzLu6vo/qVXpqmrE9zOng6ezVxN9i/M2+jqc3JnwYXp3OpsnXELuozfrP/B1NBv1Uf/Mz51Ne9ut/GPR3j0LRAIAACAAAAAAABBAEgBIAAAAAAAGbH/Cvvfkzz/8AiOP/ABqZ/wCX0lfp+1L1U1XihX7dPvj1ZRufJYihWm4OpToTlGN87urTtqkr6c2rnmaLlumJ2apjPc28TPFjeFqq1qOHXO+s3a6al+X1L+ton9VXy+CYieSmODkotSpUP4naOZJysravlr4mU3omcxVLKKfBVSpVoK0YUk2km434pK3FZv73r1Mqqrdc75n8/I/hMRMPodk0k41ZSllUct3a/adToXTddFc5xjH1a+qubONzrbMw2Wq5KWZOllXC4tWcb8/M6+n0M6e9tTVnNOOGOGPVrXL23RjHf93VOioAAACAAAAAIAABBAAABIAAAEgAAFGNXB5o43T1OdJPhMfb6rrHbRDWMfuo1dPO1Yonwj0Zzxlxa61fizylUYrmPGW7HBjqmdLNlmyyGSpszS6+ydKFaTdkmpN3tZR1bv5Hq/8AD0f6Vc+Lna3tQ62yZN57pWjpBpWUoN3TO1X2/h+ejUjg6AAAAAAAAAAAAAQYgAAAAAAAAJACrFfA/L8Tl9MxnR1/D1hbZ7cPFD4I+a+pzOj52tNR8Y8plbX2pcjFfFL7z/E83fjF6uPGfVt0cIYKopWQzpXlFdHJJ+ptWKYquU0zwmY9SqcRMtVanSjJLcpp1XTi1Wnd2lJN2tpbK/R69T2v+S6P9nzn7uZ/V3efydTAUqToysssJSadquZcMrPi8U15G3ptJa09M024xEqrl2qucys9n61OpCc6efK3/wAknN3zS63enLQmv/cn3R9T9P54OqEAAASAAAAAAAAEGIAAAAAAAAAAFeI+CXgaPScZ0lz3LLXbhVhfg8Gzh9FznT45TP3X3O05eNXHLxOJrIxqK/e2bfZhkeEqSSaimpNqN5RV2udk33G1pujNVfoi5bozTPjH1kqv26ZxVKuOz66lFuGikm+KPK/ib9jojWUXKapo3RMd9PP3satTammYz6rcTuXNrduUHJuc3VqRV8zbypdLtt9vS7SPauU3YfdqhF0oKEIyUt3FK2j1t0/7XXPn1CWjYdKMaVo5mlZNyvdyS1eupr1dufgz7odIIAAAAAAEgAAAAIMQAAAAAAAAAAPFb4ZeDNbWxnT3I/4z6MqO1DPg3wy+9+R5roef9KuPH6Nm7xhz9oLjl5fgjl9IRjU1fD0hsWuzDNWoyl7pJQ3kacqkpRVHO3apGUbTzJw1gn1u0tHax7XoL/0aPj6y0NT/ALkrcOq0KsYzqVKilCau6VorLJ8blm0b4bK3b3JdZQq2jRWaKbgoynvMuaMZXsot6tXWife30tqS6NaUYUZTkoNJSqSvrG71vy6X52CF+y2nTuoxgnleWPwq8Iuy07zW/XV7/pCyeEfne2EoAJAAAAAAAAACRBiAAAAAAAAAAAtfR8no/AiqmKommeE7jOF1PCU43sufPiZTY6L01jPV04z4z9yq7XVxlnxOCpNtuN396X+TG70Po7tW1XRmffV92UX7kRiJUqnGCyxVkr2V2zcsWLdiiLduMUx+d7CqqapzKmZcxczGUs07bpTzTjFzdkoQy3UrdeK6v/sJacbJQw9otRulCm9Es1+H1CG/Z9t1Fr+JJ37eFK/0KKoiKpwzy0kAAAAAAEgAAAABBAAAAAAAAAAAADajZVqKwGSqEs0wKpQi+cYytyuk7BLRIIX0Vwr9dSiviyhYYpAAAkAAAAAAASBBAAAAAAAAAAAACn3qedx4bKN72rR5PuVuXebEMGPG7RlGUYxyScpRTi6taEkpNpNcL6J+hI5FTbdRqWWNJ5ct/wB/XjpnUb/ZXs20l58wKIbazzlGOTqqd69W7ldpKSyWXJddLhKaO1puUc0YKLs5JVsQ5xh81siTdnF256+obnjZ3SST5a5cTJcn3W6L1Bh3MM24QbVm4ptWa18OhRVxZLTEAAAAAAACQAAABAAAAAAAAAAAAJV+4TzqScMvE2v3kZJu17Wdny+psRwVuftfB1VeaqRgsmRve4mN/wCl87/iyRxZ4Ks7p1OFqLi/eMa5QmoyWjetnm116XAqrYarJ/aPizSm/esYss78Kil0SS7OvmTgp4Su3Fp01Lpmq4txza3la9uTfMDqVtmTk+dO14tX30rNLmuLtt6Ay7dCNoRXO0UtFboUVcWSwxAAAAAAAAAAAAAASAAAAAAAAAAGyL0XgbEcFUsW0o3ivvIkVypacvoEs86L7PoB4yW+oFjku1AaqfJeBRVxZw9GKQAEASgABIAAAAgAAAAAAAAAAAAIlNLmBrp1YtK0ovRdUbEcFUqq8YvmotdjSZIw1aFP5If0xCWSdGn8kP6YhJCnBcowXgkgL3Uj80V5oIaKNWLSs7lFXFnC0xSAAAAAAAAAAAAAAAAAAAAAAAIaAqnhqb5wi/ICt7Pofy4+hOUI/ZtD+XH0GQ/ZmH/lx9BkP2bh/wCVH0GR7jgqK5QivIgXRglySQS9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH//Z" alt="glowing" />
+                        <div class="overlay"></div>
+                        <div class="cat-card-content">
+                            <h3>Glowing</h3>
+                            <a href="#bestsellers" class="pill-link">Shop now →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="cat-card blush">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ6gZn5wyeJmi9TkU_rxojJdTt3JzMzcH2ewvmq2DP7A&s=10" alt="gift sets">
+
+                        <div class="cat-card-content">
+                            <h3>Gift Sets</h3>
+                            <a href="#" class="pill-link">Give glow →</a>
+                        </div>
+                    </div>
+                    <div class="cat-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJltQ_O0wg3t2fvojz5VJew-N2df-7vszgNA56RA-fXQ&s=10" alt="Masks" />
+                        <div class="overlay"></div>
+                        <div class="cat-card-content">
+                            <h3>Masks &amp; Treatments</h3>
+                            <a href="#bestsellers" class="pill-link">Explore →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── BEST SELLERS ── -->
+        <section id="bestsellers" style="background:var(--cream2); border-radius:40px; margin:24px auto; max-width:1400px; padding:44px 0;">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Best Sellers</span>
+                        <h2>Loved by your skin</h2>
+                    </div>
+                    <p>Our community's top picks — clean, effective, and glow-worthy.</p>
+                </div>
+
+                <div class="tab-row reveal">
+                    <button class="tab-btn active" data-filter="all">All</button>
+                    <button class="tab-btn" data-filter="serum">Serums</button>
+                    <button class="tab-btn" data-filter="moisturizer">Moisturizers</button>
+                    <button class="tab-btn" data-filter="mask">Masks</button>
+                    <button class="tab-btn" data-filter="cleanser">Cleansers</button>
+                    <button class="tab-btn" data-filter="toner">Toners</button>
+                </div>
+
+                <div class="product-grid reveal" id="productGrid">
+
+                    <!-- Product 1 -->
+                    <div class="product-card" data-cat="serum">
+                        <div class="product-img">
+                            <span class="tag new">New</span>
+                            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z" /></svg></a>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHJclzpQHEfl9MKFl3SPN6wV0_dhP_c4mw0zJyBTKrWw&s=10" alt="Vitamin C Serum" />
+                        </div>
+                        <div class="product-info">
+                            <span class="cat">Serum</span>
+                            <h4>Vitamin C Brightening Serum</h4>
+                            <div class="price-row">
+                                <span class="price">$48</span>
+                                <button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card" data-cat="moisturizer">
+                        <div class="product-img">
+                            <span class="tag sale">-15%</span>
+                            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z" /></svg></a>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT44bmEuY9HSC90tgse_U0zJMZX4O9LtneuwjxEmWL1-g&s" alt="Dewy Cream" />
+                        </div>
+                        <div class="product-info">
+                            <span class="cat">Moisturizer</span>
+                            <h4>Dewy Hydration Cream</h4>
+                            <div class="price-row">
+                                <span class="price"><span class="was">$42</span>$36</span>
+                                <button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card" data-cat="mask">
+                        <div class="product-img">
+                            <span class="tag bestseller">Bestseller</span>
+                            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z" /></svg></a>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs-JelCSbJpvw_FN36p3UUBsD_zNHpQenB69YwkplbpQ&s=10" alt="Clay Mask" />
+                        </div>
+                        <div class="product-info">
+                            <span class="cat">Mask</span>
+                            <h4>Purifying Clay Mask</h4>
+                            <div class="price-row">
+                                <span class="price">$32</span>
+                                <button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="product-card" data-cat="cleanser">
+                        <div class="product-img">
+                            <span class="tag new">New</span>
+                            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z" /></svg></a>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMu7poLx2q_DrpEa8PBLHHMSx7NYg-e652fehjDM9HaA&s" alt="Foaming Gel" />
+                        </div>
+                        <div class="product-info">
+                            <span class="cat">Cleanser</span>
+                            <h4>Gentle Foaming Gel</h4>
+                            <div class="price-row">
+                                <span class="price">$24</span>
+                                <button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="product-card" data-cat="serum">
+                        <div class="product-img">
+                            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z" /></svg></a>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQayU3WV6QSW5VE6Q1dNYnzMvtBqCe8BT2GtrjRGLE3tw&s=10" alt="Hyaluronic Serum" />
+                        </div>
+                        <div class="product-info">
+                            <span class="cat">Serum</span>
+                            <h4>Hyaluronic Acid Boost</h4>
+                            <div class="price-row">
+                                <span class="price">$52</span>
+                                <button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="product-card" data-cat="moisturizer">
+                        <div class="product-img">
+                            <span class="tag sale">-10%</span>
+                            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z" /></svg></a>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVxc0lbQ8XaqwY47k-9hRoe89jNdshc8SFqY2i2h3rfQ&s=10" alt="Night Cream" />
+                        </div>
+                        <div class="product-info">
+                            <span class="cat">Moisturizer</span>
+                            <h4>Restorative Night Cream</h4>
+                            <div class="price-row">
+                                <span class="price"><span class="was">$46</span>$41</span>
+                                <button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 7 -->
+                    <div class="product-card" data-cat="mask">
+                        <div class="product-img">
+                            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z" /></svg></a>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiNasLgB-6Ac3rU5lMNYafKBuIzxfmwaA6Y_PVaew3Qg&s=10" alt="Sheet Mask" />
+                        </div>
+                        <div class="product-info">
+                            <span class="cat">Mask</span>
+                            <h4>Hydrating Sheet Mask (5pc)</h4>
+                            <div class="price-row">
+                                <span class="price">$28</span>
+                                <button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card" data-cat="cleanser">
+                        <div class="product-img">
+                            <span class="tag new">New</span>
+                            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z" /></svg></a>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNO7w6OHa8tZDPGApTiQEF-q4C4PdroReQ_ciBoxFoPw&s=10" alt="Oil Cleanser" />
+                        </div>
+                        <div class="product-info">
+                            <span class="cat">removal</span>
+                            <h4>Acne/burns removal</h4>
+                            <div class="price-row">
+                                <span class="price">$30</span>
+                                <button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- sea -->
+                    <div class="product-card" data-cat="cleanser">
+                        <div class="product-img">
+                            <span class="tag new">New</span>
+                            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z" /></svg></a>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROMaF3QW8E2aNhrZsEOmarEDwEaUB8qrMgjMvZRjieQg&s=10" alt="Oil Cleanser" />
+                        </div>
+                        <div class="product-info">
+                            <span class="cat">Cleanser</span>
+                            <h4>Sun screen spf20</h4>
+                            <div class="price-row">
+                                <span class="price">$30</span>
+                                <button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 8 -->
+                    <div class="product-card" data-cat="cleanser">
+                        <div class="product-img">
+                            <span class="tag new">New</span>
+                            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z" /></svg></a>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-uKu3SJ_bzbM6joXVnA3wVWp3R5uwUwtFztcZPouXmA&s" alt="Oil Cleanser" />
+                        </div>
+                        <div class="product-info">
+                            <span class="cat">Cleanser</span>
+                            <h4>Oil-to-Milk Cleanser</h4>
+                            <div class="price-row">
+                                <span class="price">$30</span>
+                                <button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ASH -->
+                    <div class="product-card" data-cat="cleanser">
+                        <div class="product-img">
+                            <span class="tag new">New</span>
+                            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z" /></svg></a>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsdPUF2sn-2IoZW7HwXEfhGL3iQ7PKWl5C7QgeuoTtDg&s=10" alt="Oil Cleanser" />
+                        </div>
+                        <div class="product-info">
+                            <span class="cat">Cleanser</span>
+                            <h4>oil mosturizer cream</h4>
+                            <div class="price-row">
+                                <span class="price">$30</span>
+                                <button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 9 -->
+                    <div class="product-card" data-cat="toner">
+                        <div class="product-img">
+                            <span class="tag bestseller">Bestseller</span>
+                            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z" /></svg></a>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxgbepQ0dWKyjSkTwWIVfnhcVncmhB5cJYWG6-RKTi2g&s=10" alt="Rose Toner" />
+                        </div>
+                        <div class="product-info">
+                            <span class="cat">Toner</span>
+                            <h4>Rose Water Hydrating Toner</h4>
+                            <div class="price-row">
+                                <span class="price">$22</span>
+                                <button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 10 -->
+                    <div class="product-card" data-cat="serum">
+                        <div class="product-img">
+                            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z" /></svg></a>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROQiWBL7ffpeVkb_fUC_CbAcHQvAe0uE6CE6qem6PP0Q&s=10" alt="Retinol Serum" />
+                        </div>
+                        <div class="product-info">
+                            <span class="cat">Serum</span>
+                            <h4>Retinol Renewal Serum</h4>
+                            <div class="price-row">
+                                <span class="price">$58</span>
+                                <button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 11 -->
+                    <div class="product-card" data-cat="moisturizer">
+                        <div class="product-img">
+                            <span class="tag sale">-20%</span>
+                            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z" /></svg></a>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8_9CzghGjP8hZqETyqvyD6GBauxUs2qBQYb6vVrREzA&s=10" alt="SPF Moisturizer" />
+                        </div>
+                        <div class="product-info">
+                            <span class="cat">Moisturizer</span>
+                            <h4>SPF 50 Daily Defense</h4>
+                            <div class="price-row">
+                                <span class="price"><span class="was">$38</span>$30</span>
+                                <button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+                    <!-- Product 12 -->
+                    <div class="product-card" data-cat="toner">
+                        <div class="product-img">
+                            <span class="tag new">New</span>
+                            <a href="#" class="wish-btn"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.3-8.8 10.4-8.8 10.4S3.2 12.9 3.2 8.6a4.9 4.9 0 0 1 8.8-3 4.9 4.9 0 0 1 8.8 3Z" /></svg></a>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjZkGvJ1gT_vF9AuEFdpBE7NXjMubkmYTjO1FjIqEkCw&s=10" alt="Exfoliating Toner" />
+                        </div>
+                        <div class="product-info">
+                            <span class="cat">Toner</span>
+                            <h4>Glycolic Acid Exfoliating Toner</h4>
+                            <div class="price-row">
+                                <span class="price">$26</span>
+                                <button class="add-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+
+                <div class="products-cta reveal">
+                    <a href="#" class="btn btn-outline">View Full Collection</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── FEATURES ── -->
+        <section>
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Why Gold &amp; Dev</span>
+                        <h2>Clean skincare, real results</h2>
+                    </div>
+                </div>
+                <div class="feature-grid reveal">
+                    <div class="feature-card">
+                        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z" /><path d="M2 7l10 5 10-5" /><path d="M12 22V12" /></svg></div>
+                        <span class="label">Purity</span>
+                        <h3>Vegan &amp; dermatologist-tested</h3>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg></div>
+                        <span class="label">Results</span>
+                        <h3>Visible improvement in 14 days</h3>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M20 12H4M4 12l6-6M4 12l6 6" /></svg></div>
+                        <span class="label">Shipping</span>
+                        <h3>Free delivery over $60</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── LOOKBOOK / VIDEO ── -->
+        <section style="padding-top:0;">
+            <div class="wrap">
+                <div class="lookbook reveal">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+                        Your browser does not support video.
+                    </video>
+                    <div class="lookbook-copy">
+                        <span class="eyebrow">Glow Ritual</span>
+                        <h2>See the routine in action</h2>
+                        <p>Watch how our skincare transforms your morning and night routine.</p>
+                        <a href="#" class="btn btn-light">Watch now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── TESTIMONIALS ── -->
+        <section>
+            <div class="wrap">
+                <div class="testi-wrap reveal">
+                    <div class="section-head" style="padding:0 24px;">
+                        <div>
+                            <span class="eyebrow">Real Reviews</span>
+                            <h2>Heard from our girls</h2>
+                        </div>
+                        <p>Real skin, real love.</p>
+                    </div>
+                    <div class="testi-track">
+                        <div class="testi-card">
+                            <div class="testi-stars">★★★★★</div>
+                            <p class="quote">"The Vitamin C serum gave me a glow in just one week. Obsessed."</p>
+                            <div class="testi-person">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80&auto=format&fit=crop" alt="Maya" />
+                                <div><b>Maya R.</b><span>New York, USA</span></div>
+                            </div>
+                        </div>
+                        <div class="testi-card">
+                            <div class="testi-stars">★★★★★</div>
+                            <p class="quote">"My dry skin has never felt so hydrated. The night cream is a dream."</p>
+                            <div class="testi-person">
+                                <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=100&q=80&auto=format&fit=crop" alt="Elena" />
+                                <div><b>Elena K.</b><span>London, UK</span></div>
+                            </div>
+                        </div>
+                        <div class="testi-card">
+                            <div class="testi-stars">★★★★★</div>
+                            <p class="quote">"Finally a brand that works for sensitive skin. The cleanser is so gentle."</p>
+                            <div class="testi-person">
+                                <img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=100&q=80&auto=format&fit=crop" alt="Sophia" />
+                                <div><b>Sophia C.</b><span>Toronto, CA</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── NEWSLETTER ── -->
+        <section style="padding-top:0;">
+            <div class="wrap">
+                <div class="newsletter reveal">
+                    <h2>Get 15% off your first order + early access to new drops.</h2>
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓';">
+                        <input type="email" placeholder="Enter your email address" required />
+                        <button type="submit" class="btn btn-gold">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer id="about">
+        <div class="wrap">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="foot-logo">
+                        <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+                            <circle cx="20" cy="20" r="19" stroke="#B3874F" stroke-width="1.4" />
+                            <path d="M20 8 C14 14, 14 22, 20 32 C26 22, 26 14, 20 8Z" fill="#B3874F" />
+                            <circle cx="20" cy="19" r="2.6" fill="#211d19" />
+                        </svg>
+                        <span>
+                            <span class="logo-text">GOLD <b>&</b> DEV</span>
+                            <span class="logo-sub">Modern Skincare Co.</span>
+                        </span>
+                    </div>
+                    <p>Clean, vegan skincare for the modern girl — loved in over 70 countries.</p>
+                    <div class="social-row">
+                        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.2" cy="6.8" r="1" /></svg></a>
+                        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M9 17c1-3 1.3-6 2-9a2.5 2.5 0 1 1 4 2c0 2-1 4-3 4" /></svg></a>
+                        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3-3.46" /><path d="M14 4c.3 2 2 3.6 4 3.8" /></svg></a>
+                    </div>
+                </div>
+
+                <div class="foot-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">Serums</a></li>
+                        <li><a href="#">Moisturizers</a></li>
+                        <li><a href="#">Masks</a></li>
+                        <li><a href="#">Cleansers</a></li>
+                        <li><a href="#">Toners</a></li>
+                    </ul>
+                </div>
+
+                <div class="foot-col">
+                    <h4>Help</h4>
+                    <ul>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns &amp; Exchanges</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="foot-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Wholesale</a></li>
+                    </ul>
+                </div>
+
+                <div class="foot-col">
+                    <h4>Stay in touch</h4>
+                    <p style="font-size:13px; line-height:1.6; color:#a09385; margin-bottom:14px;">Get early access and exclusive offers.</p>
+                    <div style="display:flex; gap:8px;">
+                        <input type="email" placeholder="Email" style="flex:1; min-width:0; padding:12px 14px; border-radius:100px; border:1px solid rgba(250,246,239,.2); background:transparent; color:#fff; font-family:inherit; font-size:13px; outline:none;" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="foot-bottom">
+                <span style="color: rgb(224, 235, 222); font-size: 20px;">Built by <span style="color: greenyellow;">Joseph Gold</span> CEO of GOlD FOODS Company</span>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ─── ACCOUNT MENU ─── -->
+    <div class="account-menu" id="accountMenu">
+        <div class="who">
+            <b id="accountMenuName">Guest</b>
+            <span id="accountMenuEmail">Not signed in</span>
+        </div>
+        <a href="#">My Orders</a>
+        <a href="#">Wishlist</a>
+        <button class="logout" id="logoutBtn">Sign Out</button>
+    </div>
+
+    <!-- ─── AUTH MODAL ─── -->
+    <div class="auth-overlay" id="authOverlay">
+        <div class="auth-modal" role="dialog" aria-modal="true">
+            <button class="auth-close" id="authClose" aria-label="Close">
+                <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" /></svg>
+            </button>
+
+            <div class="auth-visual">
+                <img src="https://images.unsplash.com/photo-1571875257727-256c39da42af?w=900&q=80&auto=format&fit=crop" alt="Skincare" />
+                <div class="auth-visual-copy">
+                    <span class="eyebrow">Gold &amp; Dev</span>
+                    <h3>Join the glow club</h3>
+                    <p>Members get 15% off, early drops, and free shipping.</p>
+                </div>
+            </div>
+
+            <div class="auth-panel">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" id="tabSignin">Sign In</button>
+                    <button class="auth-tab" id="tabSignup">Create Account</button>
+                </div>
+
+                <div id="authToast" class="auth-toast">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12l7 7L21 5" /></svg>
+                    <span id="authToastMsg">Success</span>
+                </div>
+
+               
+    <script>
+        (function() {
+            // ── Mobile Menu ──
+            const burger = document.getElementById('burgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+            mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+            // ── Tab Filter ──
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const filter = this.dataset.filter;
+                    document.querySelectorAll('#productGrid .product-card').forEach(card => {
+                        const cats = card.dataset.cat || '';
+                        card.style.display = (filter === 'all' || cats.includes(filter)) ? '' : 'none';
+                    });
+                });
+            });
+
+            // ── Wishlist Toggle ──
+            document.querySelectorAll('.wish-btn').forEach(btn => {
+                btn.addEventListener('click', e => {
+                    e.preventDefault();
+                    const svg = btn.querySelector('svg');
+                    const fill = svg.getAttribute('fill') === 'none' ? '#B3874F' : 'none';
+                    svg.setAttribute('fill', fill);
+                    svg.style.stroke = fill === 'none' ? '#211d19' : '#B3874F';
+                });
+            });
+
+            // ── Add to Cart ──
+            let count = 3;
+            document.querySelectorAll('.add-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    count++;
+                    const el = document.querySelector('.cart-count');
+                    el.textContent = count;
+                    el.style.transform = 'scale(1.4)';
+                    setTimeout(() => el.style.transform = 'scale(1)', 200);
+                });
+            });
+
+            // ── Scroll Reveal ──
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+            // ── Auth System ──
+            const USERS_KEY = 'novaoak_users';
+            const SESSION_KEY = 'novaoak_session';
+
+            function getUsers() { try { return JSON.parse(localStorage.getItem(USERS_KEY)) || []; } catch { return []; } }
+
+            function saveUsers(u) { localStorage.setItem(USERS_KEY, JSON.stringify(u)); }
+
+            function getSession() { try { return JSON.parse(localStorage.getItem(SESSION_KEY)); } catch { return null; } }
+
+            function setSession(u) { localStorage.setItem(SESSION_KEY, JSON.stringify(u)); }
+
+            function clearSession() { localStorage.removeItem(SESSION_KEY); }
+
+            function hashPass(str) { let h = 0; for (let i = 0; i < str.length; i++) { h = (Math.imul(31, h) + str.charCodeAt(i)) |
+                    0; } return 'h' + h.toString(36); }
+
+            function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+            const overlay = document.getElementById('authOverlay');
+            const closeBtn = document.getElementById('authClose');
+            const tabSignin = document.getElementById('tabSignin');
+            const tabSignup = document.getElementById('tabSignup');
+            const signinForm = document.getElementById('signinForm');
+            const signupForm = document.getElementById('signupForm');
+            const goSignup = document.getElementById('goSignup');
+            const goSignin = document.getElementById('goSignin');
+            const toast = document.getElementById('authToast');
+            const toastMsg = document.getElementById('authToastMsg');
+            const accountBtn = document.getElementById('accountBtn');
+            const accountMenu = document.getElementById('accountMenu');
+            const accountMenuName = document.getElementById('accountMenuName');
+            const accountMenuEmail = document.getElementById('accountMenuEmail');
+            const logoutBtn = document.getElementById('logoutBtn');
+
+            let lastFocused = null;
+
+            function openAuth(showSignup) {
+                lastFocused = document.activeElement;
+                overlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                switchTo(showSignup ? 'signup' : 'signin');
+                setTimeout(() => {
+                    const first = (showSignup ? signupForm : signinForm).querySelector('input');
+                    if (first) first.focus();
+                }, 350);
+            }
+
+            function closeAuth() {
+                overlay.classList.remove('open');
+                document.body.style.overflow = '';
+                if (lastFocused) lastFocused.focus();
+            }
+            closeBtn.addEventListener('click', closeAuth);
+            overlay.addEventListener('click', e => { if (e.target === overlay) closeAuth(); });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') {
+                    if (overlay.classList.contains('open')) closeAuth();
+                    if (accountMenu.classList.contains('open')) accountMenu.classList.remove('open');
+                }
+            });
+
+            function switchTo(which) {
+                const toSignup = which === 'signup';
+                tabSignin.classList.toggle('active', !toSignup);
+                tabSignup.classList.toggle('active', toSignup);
+                signinForm.classList.toggle('hidden', toSignup);
+                signupForm.classList.toggle('hidden', !toSignup);
+                hideToast();
+                clearAllErrors();
+            }
+            tabSignin.addEventListener('click', () => switchTo('signin'));
+            tabSignup.addEventListener('click', () => switchTo('signup'));
+            goSignup.addEventListener('click', () => switchTo('signup'));
+            goSignin.addEventListener('click', () => switchTo('signin'));
+
+            function showToast(msg, isError) {
+                toast.classList.toggle('error', !!isError);
+                toastMsg.textContent = msg;
+                toast.classList.add('show');
+            }
+
+            function hideToast() { toast.classList.remove('show'); }
+
+            function showToastGlobal(msg) {
+                const t = document.createElement('div');
+                t.textContent = msg;
+                t.style.cssText =
+                    'position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#211d19;color:#faf6ef;padding:14px 24px;border-radius:100px;font-family:Manrope,sans-serif;font-weight:700;font-size:13.5px;z-index:3000;box-shadow:0 20px 40px -15px rgba(0,0,0,.4);max-width:88vw;text-align:center;';
+                document.body.appendChild(t);
+                setTimeout(() => t.remove(), 2800);
+            }
+
+            function setError(wrapId, errId, show) {
+                document.getElementById(wrapId).classList.toggle('error', show);
+                document.getElementById(errId).style.display = show ? 'block' : 'none';
+            }
+
+            function clearAllErrors() {
+                ['signinEmail', 'signinPassword'].forEach(f => setError(f + 'Wrap', f + 'Error', false));
+                ['signupName', 'signupEmail', 'signupPassword', 'signupConfirm'].forEach(f => setError(f + 'Wrap', f +
+                    'Error', false));
+            }
+
+            document.querySelectorAll('.toggle-pass').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const input = document.getElementById(this.dataset.target);
+                    input.type = input.type === 'password' ? 'text' : 'password';
+                });
+            });
+
+            function refreshAccountUI() {
+                const s = getSession();
+                if (s) {
+                    accountMenuName.textContent = s.name;
+                    accountMenuEmail.textContent = s.email;
+                    accountBtn.querySelector('svg').style.stroke = '#B3874F';
+                } else {
+                    accountMenuName.textContent = 'Guest';
+                    accountMenuEmail.textContent = 'Not signed in';
+                    accountBtn.querySelector('svg').style.stroke = '#211d19';
+                }
+            }
+            refreshAccountUI();
+
+            accountBtn.addEventListener('click', e => {
+                e.preventDefault();
+                getSession() ? accountMenu.classList.toggle('open') : openAuth(false);
+            });
+            document.addEventListener('click', e => {
+                if (!accountMenu.contains(e.target) && e.target !== accountBtn && !accountBtn.contains(e.target)) {
+                    accountMenu.classList.remove('open');
+                }
+            });
+            logoutBtn.addEventListener('click', () => {
+                clearSession();
+                accountMenu.classList.remove('open');
+                refreshAccountUI();
+                showToastGlobal('Signed out.');
+            });
+
+            signinForm.addEventListener('submit', e => {
+                e.preventDefault();
+                hideToast();
+                const email = document.getElementById('signinEmail').value.trim();
+                const password = document.getElementById('signinPassword').value;
+                let valid = true;
+                if (!isValidEmail(email)) { setError('signinEmailWrap', 'signinEmailError', true);
+                    valid = false; } else setError('signinEmailWrap', 'signinEmailError', false);
+                if (password.length < 6) { setError('signinPasswordWrap', 'signinPasswordError', true);
+                    valid = false; } else setError('signinPasswordWrap', 'signinPasswordError', false);
+                if (!valid) return;
+                const users = getUsers();
+                const found = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+                if (!found || found.pass !== hashPass(password)) {
+                    showToast('Incorrect email or password.', true);
+                    return;
+                }
+                const submitBtn = document.getElementById('signinSubmit');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Signing in...';
+                setTimeout(() => {
+                    setSession({ name: found.name, email: found.email });
+                    refreshAccountUI();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Sign In';
+                    signinForm.reset();
+                    closeAuth();
+                    showToastGlobal('Welcome back, ' + found.name.split(' ')[0] + '!');
+                }, 600);
+            });
+
+            signupForm.addEventListener('submit', e => {
+                e.preventDefault();
+                hideToast();
+                const name = document.getElementById('signupName').value.trim();
+                const email = document.getElementById('signupEmail').value.trim();
+                const password = document.getElementById('signupPassword').value;
+                const confirm = document.getElementById('signupConfirm').value;
+                let valid = true;
+                if (name.length < 2) { setError('signupNameWrap', 'signupNameError', true);
+                    valid = false; } else setError('signupNameWrap', 'signupNameError', false);
+                if (!isValidEmail(email)) { setError('signupEmailWrap', 'signupEmailError', true);
+                    valid = false; } else setError('signupEmailWrap', 'signupEmailError', false);
+                if (password.length < 6) { setError('signupPasswordWrap', 'signupPasswordError', true);
+                    valid = false; } else setError('signupPasswordWrap', 'signupPasswordError', false);
+                if (confirm !== password || confirm.length < 6) { setError('signupConfirmWrap', 'signupConfirmError',
+                        true);
+                    valid = false; } else setError('signupConfirmWrap', 'signupConfirmError', false);
+                if (!valid) return;
+                const users = getUsers();
+                if (users.some(u => u.email.toLowerCase() === email.toLowerCase())) {
+                    showToast('An account with this email already exists.', true);
+                    return;
+                }
+                const submitBtn = document.getElementById('signupSubmit');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Creating account...';
+                setTimeout(() => {
+                    users.push({ name, email, pass: hashPass(password) });
+                    saveUsers(users);
+                    setSession({ name, email });
+                    refreshAccountUI();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Create Account';
+                    signupForm.reset();
+                    closeAuth();
+                    showToastGlobal('Welcome to Gold & Dev, ' + name.split(' ')[0] +
+                        '! Your 15% code: GLOW15');
+                }, 700);
+            });
+
+            document.getElementById('forgotLink').addEventListener('click', e => {
+                e.preventDefault();
+                const email = document.getElementById('signinEmail').value.trim();
+                if (!isValidEmail(email)) {
+                    setError('signinEmailWrap', 'signinEmailError', true);
+                    showToast('Enter your email first.', true);
+                    return;
+                }
+                setError('signinEmailWrap', 'signinEmailError', false);
+                showToast('If an account exists for ' + email + ', a reset link has been sent.', false);
+            });
+
+            // Shop Now buttons
+            document.querySelectorAll('#shopNowBtn, #shopNowBtnMobile').forEach(el => {
+                if (el) el.addEventListener('click', e => {
+                    e.preventDefault();
+                    openAuth(false);
+                });
+            });
+
+        })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,933 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story — Gold & Dev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#faf6ef;
+    --cream-2:#efe8d9;
+    --cream-3:#f3ede1;
+    --ink:#211d19;
+    --ink-soft:#524b41;
+    --gold:#B3874F;
+    --gold-deep:#8a642f;
+    --gold-light:#e3c193;
+    --line:rgba(33,29,25,.1);
+    --shadow: 0 30px 60px -25px rgba(33,29,25,.25);
+    --ease: cubic-bezier(.2,.7,.2,1);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream); color:var(--ink); font-family:'Manrope', sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+  img{display:block; max-width:100%;}
+  a{text-decoration:none; color:inherit;}
+  h1,h2,h3,h4{font-family:'Fraunces', serif; font-weight:500; line-height:1.1; letter-spacing:-.01em;}
+  em{font-style:italic; color:var(--gold-deep);}
+  .wrap{max-width:1360px; margin:0 auto; padding:0 32px;}
+  ::selection{background:var(--gold); color:var(--cream);}
+
+  /* scroll progress */
+  .scroll-progress{position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,var(--gold-deep),var(--gold-light)); z-index:999; width:0%; transition:width .1s linear;}
+
+  .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-deep);}
+  .eyebrow::before{content:''; width:22px; height:1.5px; background:var(--gold-deep);}
+  .btn{position:relative; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:15px 32px; border-radius:100px; font-weight:700; font-size:14px; border:1px solid transparent; cursor:pointer; transition:.35s var(--ease); white-space:nowrap; overflow:hidden;}
+  .btn-primary{background:var(--ink); color:var(--cream);}
+  .btn-primary:hover{background:var(--gold-deep); transform:translateY(-2px); box-shadow:0 14px 28px -10px rgba(138,100,47,.55);}
+  .btn-outline{border-color:var(--ink); color:var(--ink);}
+  .btn-outline:hover{background:var(--ink); color:var(--cream); transform:translateY(-2px);}
+
+  .reveal{opacity:0; transform:translateY(36px); transition:opacity .9s var(--ease), transform .9s var(--ease);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .reveal-l{opacity:0; transform:translateX(-46px); transition:opacity 1s var(--ease), transform 1s var(--ease);}
+  .reveal-l.in{opacity:1; transform:translateX(0);}
+  .reveal-r{opacity:0; transform:translateX(46px); transition:opacity 1s var(--ease), transform 1s var(--ease);}
+  .reveal-r.in{opacity:1; transform:translateX(0);}
+  .stagger.in > *{animation:staggerIn .8s var(--ease) both;}
+  .stagger.in > *:nth-child(1){animation-delay:.05s;}
+  .stagger.in > *:nth-child(2){animation-delay:.15s;}
+  .stagger.in > *:nth-child(3){animation-delay:.25s;}
+  .stagger.in > *:nth-child(4){animation-delay:.35s;}
+  @keyframes staggerIn{from{opacity:0; transform:translateY(28px);} to{opacity:1; transform:translateY(0);}}
+
+  .topbar{background:var(--ink); color:var(--cream-2); text-align:center; font-size:12.5px; letter-spacing:.05em; padding:10px 14px; font-weight:600; overflow:hidden; white-space:nowrap;}
+  .topbar-track{display:inline-flex; animation:marquee 26s linear infinite;}
+  .topbar-track span{padding:0 28px; color:var(--gold-light); font-weight:700;}
+  .topbar-track b{font-weight:600; color:var(--cream-2);}
+  @keyframes marquee{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+
+  header{position:sticky; top:0; z-index:200; background:rgba(250,246,239,.86); backdrop-filter:blur(14px); border-bottom:1px solid var(--line); transition:.3s var(--ease);}
+  header.scrolled{box-shadow:0 8px 30px -20px rgba(33,29,25,.3);}
+  nav.wrap{display:flex; align-items:center; justify-content:space-between; padding:18px 32px; transition:.3s var(--ease);}
+  header.scrolled nav.wrap{padding:12px 32px;}
+  .logo{display:flex; align-items:center; gap:10px;}
+  .logo-mark{width:36px; height:36px; flex-shrink:0;}
+  .logo-text{font-family:'Fraunces', serif; font-size:19px; font-weight:600; letter-spacing:.02em; display:block;}
+  .logo-sub{font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); display:block; margin-top:1px;}
+  .nav-links{display:flex; align-items:center; gap:34px; list-style:none;}
+  .nav-links a{font-size:14.5px; font-weight:600; position:relative; padding-bottom:4px;}
+  .nav-links a::after{content:''; position:absolute; left:0; bottom:0; width:0; height:1.5px; background:var(--gold-deep); transition:width .3s ease;}
+  .nav-links a:hover::after, .nav-links a.active::after{width:100%;}
+  .nav-links a.active{color:var(--gold-deep);}
+  .burger{display:none; flex-direction:column; gap:5px; width:26px; background:none; border:none; cursor:pointer;}
+  .burger span{width:100%; height:2px; background:var(--ink); border-radius:2px; transition:.3s var(--ease);}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .burger.open span:nth-child(2){opacity:0;}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-menu{display:flex; flex-direction:column; background:var(--cream); border-top:1px solid var(--line); padding:0 32px; max-height:0; overflow:hidden; transition:max-height .4s var(--ease), padding .4s var(--ease);}
+  .mobile-menu a{padding:14px 0; border-bottom:1px solid var(--line); font-weight:600; font-size:15px; opacity:0; transform:translateY(-8px); transition:.4s var(--ease);}
+  .mobile-menu.open{max-height:400px; padding:8px 32px 20px;}
+  .mobile-menu.open a{opacity:1; transform:translateY(0);}
+  .mobile-menu.open a:nth-child(1){transition-delay:.05s;}
+  .mobile-menu.open a:nth-child(2){transition-delay:.1s;}
+  .mobile-menu.open a:nth-child(3){transition-delay:.15s;}
+  .mobile-menu.open a:nth-child(4){transition-delay:.2s;}
+  .mobile-menu.open a:nth-child(5){transition-delay:.25s;}
+
+  /* HERO */
+  .hero{position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; color:var(--cream); text-align:center;}
+  .hero-video-wrap{position:absolute; inset:0; z-index:0; overflow:hidden;}
+  .hero video{position:absolute; top:50%; left:50%; width:100%; height:100%; object-fit:cover; transform:translate(-50%,-50%) scale(1.001); will-change:transform;}
+  .hero::before{content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(33,29,25,.55) 0%, rgba(33,29,25,.35) 45%, rgba(33,29,25,.8) 100%);}
+  .hero-content{position:relative; z-index:2; max-width:820px; padding:0 24px;}
+  .hero-content .eyebrow{color:var(--gold-light); justify-content:center; opacity:0; animation:fadeUp .9s var(--ease) .2s forwards;}
+  .hero-content .eyebrow::before{background:var(--gold-light);}
+  .hero-content h1{font-size:clamp(42px,7vw,96px); color:var(--cream); margin-top:20px; overflow:hidden;}
+  .hero-content h1 .line{display:block; overflow:hidden;}
+  .hero-content h1 span{display:inline-block; transform:translateY(110%); animation:lineUp 1s var(--ease) forwards;}
+  .hero-content h1 .line:nth-child(1) span{animation-delay:.35s;}
+  .hero-content h1 .line:nth-child(2) span{animation-delay:.5s;}
+  @keyframes lineUp{to{transform:translateY(0);}}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+  .hero-content p{font-size:17px; color:rgba(250,246,239,.85); max-width:520px; margin:22px auto 0; line-height:1.75; opacity:0; animation:fadeUp .9s var(--ease) .75s forwards;}
+  .hero-founder-badge{display:inline-flex; align-items:center; gap:10px; margin-top:30px; padding:8px 18px 8px 8px; border-radius:100px; background:rgba(250,246,239,.12); border:1px solid rgba(250,246,239,.3); backdrop-filter:blur(6px); opacity:0; animation:fadeUp .9s var(--ease) .95s forwards;}
+  .hero-founder-badge img{width:34px; height:34px; border-radius:50%; object-fit:cover;}
+  .hero-founder-badge .name{font-size:13px; font-weight:700; color:var(--cream); display:block;}
+  .hero-founder-badge .role{font-size:10.5px; color:rgba(250,246,239,.7); text-transform:uppercase; letter-spacing:.06em;}
+  .scroll-cue{position:absolute; z-index:2; bottom:36px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:10px; color:rgba(250,246,239,.75); font-size:11px; letter-spacing:.14em; text-transform:uppercase; opacity:0; animation:fadeUp .9s var(--ease) 1.2s forwards;}
+  .scroll-cue .line{width:1px; height:38px; background:rgba(250,246,239,.5); position:relative; overflow:hidden;}
+  .scroll-cue .line::after{content:''; position:absolute; top:-100%; left:0; width:100%; height:100%; background:var(--gold-light); animation:scrollLine 2s ease-in-out infinite;}
+  @keyframes scrollLine{0%{top:-100%;} 60%{top:100%;} 100%{top:100%;}}
+  .hero-mute{position:absolute; z-index:3; bottom:36px; right:36px; width:46px; height:46px; border-radius:50%; background:rgba(250,246,239,.14); border:1px solid rgba(250,246,239,.4); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:.3s var(--ease); opacity:0; animation:fadeUp .9s var(--ease) 1.2s forwards;}
+  .hero-mute:hover{background:var(--gold); border-color:var(--gold);}
+  .hero-mute svg{width:18px; height:18px; stroke:var(--cream); fill:none; stroke-width:1.8;}
+  .hero-play-fallback{position:absolute; z-index:3; top:50%; left:50%; transform:translate(-50%,-50%); display:none; align-items:center; gap:12px; padding:16px 30px 16px 20px; border-radius:100px; background:rgba(33,29,25,.55); border:1px solid rgba(250,246,239,.5); backdrop-filter:blur(8px); color:var(--cream); cursor:pointer; font-family:'Manrope',sans-serif; font-size:14px; font-weight:700; letter-spacing:.02em;}
+  .hero-play-fallback.show{display:flex;}
+  .hero-play-fallback svg{width:36px; height:36px; fill:var(--cream); flex-shrink:0;}
+  .hero-play-fallback:hover{background:var(--gold-deep); border-color:var(--gold-deep);}
+
+  section{padding:130px 0;}
+
+  .origin-grid{display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center;}
+  .origin-visual{position:relative;}
+  .origin-visual .main-img{border-radius:26px; overflow:hidden; box-shadow:var(--shadow);}
+  .origin-visual .main-img img{width:100%; height:560px; object-fit:cover; transition:transform 1.2s var(--ease);}
+  .origin-visual:hover .main-img img{transform:scale(1.04);}
+  .origin-visual .float-img{position:absolute; width:44%; border-radius:18px; overflow:hidden; box-shadow:0 24px 50px -20px rgba(33,29,25,.4); border:6px solid var(--cream);}
+  .origin-visual .float-img img{width:100%; height:220px; object-fit:cover;}
+  .origin-visual .float-1{bottom:-40px; left:-50px;}
+  .origin-visual .float-badge{
+    position:absolute; top:-24px; right:-24px; width:112px; height:112px; border-radius:50%;
+    background:var(--gold-deep); color:var(--cream); display:flex; align-items:center; justify-content:center;
+    text-align:center; font-family:'Fraunces',serif; font-size:13px; font-weight:600; line-height:1.3;
+    box-shadow:0 20px 40px -15px rgba(138,100,47,.6); animation:spin 16s linear infinite;
+  }
+  @keyframes spin{from{transform:rotate(0deg);} to{transform:rotate(360deg);}}
+  .origin-copy p{color:var(--ink-soft); font-size:15.5px; line-height:1.85; margin-bottom:20px;}
+  .origin-copy h2{font-size:clamp(30px,3.6vw,46px); margin:16px 0 26px;}
+  .signature{margin-top:34px; display:flex; align-items:center; gap:16px;}
+  .signature .sig-text{font-family:'Fraunces',serif; font-style:italic; font-size:26px; color:var(--ink);}
+  .signature span{display:block; font-size:12.5px; color:var(--ink-soft); margin-top:2px; font-style:normal; font-family:'Manrope',sans-serif;}
+
+  .stats-band{background:var(--ink); border-radius:36px; max-width:1360px; margin:0 auto; padding:64px 40px; position:relative; overflow:hidden;}
+  .stats-band::before{content:''; position:absolute; inset:0; background:radial-gradient(circle at 20% 20%, rgba(179,135,79,.25), transparent 55%), radial-gradient(circle at 85% 80%, rgba(227,193,147,.15), transparent 50%);}
+  .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center; position:relative; z-index:1;}
+  .stat b{font-family:'Fraunces',serif; font-size:clamp(34px,4vw,54px); color:var(--gold-light); font-weight:500; display:block;}
+  .stat span{color:rgba(250,246,239,.7); font-size:13px; text-transform:uppercase; letter-spacing:.08em; font-weight:700; margin-top:8px; display:block;}
+
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:60px; flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(28px,3.4vw,44px);}
+  .section-head p{max-width:360px; color:var(--ink-soft); font-size:14.5px; line-height:1.7;}
+
+  .timeline{position:relative; padding-left:6px;}
+  .timeline::before{content:''; position:absolute; left:74px; top:8px; bottom:8px; width:1.5px; background:var(--line);}
+  .timeline::after{content:''; position:absolute; left:74px; top:8px; width:1.5px; background:var(--gold-deep); height:var(--tl-progress,0%); transition:height .1s linear;}
+  .tl-item{display:grid; grid-template-columns:74px 1fr; gap:36px; position:relative; padding-bottom:64px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-year{font-family:'Fraunces',serif; font-size:20px; font-weight:600; color:var(--gold-deep); text-align:right; padding-top:2px;}
+  .tl-dot{position:absolute; left:70px; top:6px; width:9px; height:9px; border-radius:50%; background:var(--gold-deep); box-shadow:0 0 0 6px var(--cream), 0 0 0 7px var(--line); transition:.4s var(--ease);}
+  .tl-item.in .tl-dot{transform:scale(1.3);}
+  .tl-body{display:grid; grid-template-columns:1.1fr .9fr; gap:36px; align-items:center;}
+  .tl-body img{border-radius:18px; height:190px; width:100%; object-fit:cover;}
+  .tl-body h3{font-size:21px; margin-bottom:10px;}
+  .tl-body p{color:var(--ink-soft); font-size:14.5px; line-height:1.75;}
+
+  .values-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .value-card{background:var(--cream-2); border-radius:24px; padding:38px 30px; transition:.4s var(--ease);}
+  .value-card:hover{transform:translateY(-8px); box-shadow:var(--shadow); background:var(--cream-3);}
+  .value-icon{width:48px; height:48px; border-radius:50%; background:var(--ink); display:flex; align-items:center; justify-content:center; margin-bottom:22px; transition:.4s var(--ease);}
+  .value-card:hover .value-icon{background:var(--gold-deep); transform:rotate(-8deg);}
+  .value-icon svg{width:21px; height:21px; stroke:var(--cream); fill:none; stroke-width:1.7;}
+  .value-card h3{font-size:18.5px; margin-bottom:10px; font-weight:500;}
+  .value-card p{font-size:14px; color:var(--ink-soft); line-height:1.7;}
+
+  .film{position:relative; border-radius:32px; overflow:hidden; max-width:1360px; margin:0 auto; aspect-ratio:16/8; box-shadow:var(--shadow);}
+  .film video{width:100%; height:100%; object-fit:cover;}
+  .film-overlay{position:absolute; inset:0; background:linear-gradient(0deg, rgba(33,29,25,.72), rgba(33,29,25,0) 55%);}
+  .film-copy{position:absolute; left:36px; bottom:32px; right:36px; color:var(--cream); z-index:2; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;}
+  .film-copy .eyebrow{color:var(--gold-light);}
+  .film-copy .eyebrow::before{background:var(--gold-light);}
+  .film-copy h3{font-size:clamp(22px,2.6vw,32px); max-width:480px; margin-top:10px; color:var(--cream);}
+  .play-btn{width:70px; height:70px; border-radius:50%; background:rgba(250,246,239,.16); border:1px solid rgba(250,246,239,.5); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; backdrop-filter:blur(6px); transition:.3s var(--ease);}
+  .play-btn:hover{background:var(--gold); border-color:var(--gold); transform:scale(1.06);}
+  .play-btn svg{width:20px; height:20px; fill:var(--cream); margin-left:3px;}
+
+  .quote-block{display:grid; grid-template-columns:.8fr 1.2fr; gap:60px; align-items:center; background:var(--cream-2); border-radius:36px; padding:20px;}
+  .quote-visual img{width:100%; height:100%; object-fit:cover; border-radius:26px; aspect-ratio:4/5;}
+  .quote-copy{padding:30px 46px 30px 10px;}
+  .quote-mark{font-family:'Fraunces',serif; font-size:80px; color:var(--gold-light); line-height:.4; display:block; margin-bottom:16px;}
+  .quote-copy p.quote-text{font-family:'Fraunces',serif; font-style:italic; font-size:clamp(20px,2.2vw,28px); line-height:1.5; color:var(--ink); margin-bottom:26px;}
+  .quote-person b{font-size:15px; display:block;}
+  .quote-person span{font-size:13px; color:var(--ink-soft);}
+
+  /* commitment section */
+  .commit-grid{display:grid; grid-template-columns:1fr .85fr; gap:70px; align-items:center;}
+  .commit-copy h2{font-size:clamp(28px,3.4vw,42px); margin:16px 0 20px;}
+  .commit-lead{color:var(--ink-soft); font-size:15px; line-height:1.8; margin-bottom:36px; max-width:480px;}
+  .commit-list{list-style:none; display:flex; flex-direction:column; gap:26px;}
+  .commit-list li{display:flex; gap:18px; align-items:flex-start;}
+  .commit-tick{width:34px; height:34px; border-radius:50%; background:var(--gold-deep); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px;}
+  .commit-tick svg{width:16px; height:16px; stroke:var(--cream); fill:none; stroke-width:2.4;}
+  .commit-list h4{font-family:'Fraunces',serif; font-weight:500; font-size:16.5px; margin-bottom:5px;}
+  .commit-list p{font-size:14px; color:var(--ink-soft); line-height:1.7;}
+  .commit-visual{position:relative; border-radius:26px; overflow:hidden; box-shadow:var(--shadow);}
+  .commit-visual img{width:100%; height:520px; object-fit:cover; transition:transform 1.2s var(--ease);}
+  .commit-visual:hover img{transform:scale(1.05);}
+  .commit-badge{position:absolute; bottom:24px; left:24px; background:rgba(250,246,239,.94); backdrop-filter:blur(6px); border-radius:18px; padding:18px 24px; box-shadow:0 20px 40px -20px rgba(33,29,25,.4);}
+  .commit-badge b{font-family:'Fraunces',serif; font-size:28px; color:var(--gold-deep); display:block; line-height:1;}
+  .commit-badge span{font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); font-weight:700;}
+
+  .gallery-grid{display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:180px; gap:18px;}
+  .g-item{border-radius:20px; overflow:hidden; position:relative;}
+  .g-item img{width:100%; height:100%; object-fit:cover; transition:transform .7s var(--ease);}
+  .g-item:hover img{transform:scale(1.08);}
+  .g-item.span2{grid-row:span 2;}
+  .g-item.wide{grid-column:span 2;}
+
+  .cta-banner{position:relative; border-radius:36px; overflow:hidden; min-height:420px; display:flex; align-items:center; justify-content:center; text-align:center;}
+  .cta-banner img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .cta-banner::before{content:''; position:absolute; inset:0; background:rgba(33,29,25,.62);}
+  .cta-inner{position:relative; z-index:2; color:var(--cream); max-width:600px; padding:0 24px;}
+  .cta-inner .eyebrow{color:var(--gold-light); justify-content:center;}
+  .cta-inner .eyebrow::before{background:var(--gold-light);}
+  .cta-inner h2{color:var(--cream); font-size:clamp(28px,3.6vw,44px); margin:16px 0 30px;}
+  .cta-row{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .cta-banner .btn-outline{border-color:rgba(250,246,239,.55); color:var(--cream);}
+  .cta-banner .btn-outline:hover{background:var(--cream); color:var(--ink);}
+
+  footer{background:var(--ink); color:var(--cream); padding:80px 0 0;}
+  .footer-grid{display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr 1.2fr; gap:40px; padding-bottom:56px; border-bottom:1px solid rgba(250,246,239,.12);}
+  .foot-logo{display:flex; align-items:center; gap:10px; margin-bottom:18px;}
+  .foot-logo .logo-text{color:var(--cream);}
+  .foot-logo .logo-sub{color:rgba(250,246,239,.55);}
+  .footer-brand p{font-size:13.5px; line-height:1.7; color:rgba(250,246,239,.65); max-width:280px; margin-bottom:22px;}
+  .social-row{display:flex; gap:10px;}
+  .social-row a{width:36px; height:36px; border-radius:50%; border:1px solid rgba(250,246,239,.25); display:flex; align-items:center; justify-content:center; transition:.3s var(--ease);}
+  .social-row a:hover{background:var(--gold); border-color:var(--gold); transform:translateY(-3px);}
+  .social-row svg{width:16px; height:16px; stroke:var(--cream); fill:none; stroke-width:1.6;}
+  .foot-col h4{font-family:'Manrope',sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:20px; color:var(--gold-light);}
+  .foot-col ul{list-style:none;}
+  .foot-col li{margin-bottom:12px;}
+  .foot-col a{font-size:14px; color:rgba(250,246,239,.75); transition:.2s;}
+  .foot-col a:hover{color:var(--gold-light); padding-left:4px;}
+  .foot-bottom{display:flex; justify-content:space-between; align-items:center; padding:26px 0; font-size:12.5px; color:rgba(250,246,239,.55); flex-wrap:wrap; gap:12px;}
+  .legal-links{display:flex; gap:22px;}
+  .legal-links a{color:rgba(250,246,239,.55);}
+  .legal-links a:hover{color:var(--gold-light);}
+  .foot-owner{font-size:12.5px; color:rgba(250,246,239,.55);}
+  .foot-owner b{color:var(--gold-light); font-weight:700;}
+
+  /* press strip */
+  .press-strip{padding:56px 0; border-bottom:1px solid var(--line); border-top:1px solid var(--line);}
+  .press-inner{display:flex; align-items:center; gap:50px; justify-content:space-between; flex-wrap:wrap;}
+  .press-label{font-size:11.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); white-space:nowrap;}
+  .press-logos{display:flex; align-items:center; gap:56px; flex-wrap:wrap; opacity:.55;}
+  .press-logos span{font-family:'Fraunces',serif; font-size:20px; font-weight:600; color:var(--ink-soft); letter-spacing:.01em; transition:.3s var(--ease);}
+  .press-logos span:hover{color:var(--gold-deep); opacity:1;}
+
+  /* process section */
+  .process-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:0; position:relative;}
+  .process-item{position:relative; padding:0 34px; text-align:left;}
+  .process-item:not(:last-child)::after{content:''; position:absolute; right:0; top:10px; bottom:10px; width:1px; background:var(--line);}
+  .process-num{font-family:'Fraunces',serif; font-size:15px; color:var(--gold-light); -webkit-text-stroke:1.4px var(--gold-deep); font-weight:600; display:block; margin-bottom:22px;}
+  .process-item .process-img{border-radius:20px; overflow:hidden; margin-bottom:26px; box-shadow:0 20px 40px -22px rgba(33,29,25,.35);}
+  .process-item .process-img img{width:100%; height:220px; object-fit:cover; transition:transform .8s var(--ease);}
+  .process-item:hover .process-img img{transform:scale(1.06);}
+  .process-item h3{font-size:20px; margin-bottom:10px;}
+  .process-item p{font-size:14.5px; color:var(--ink-soft); line-height:1.75;}
+
+  .newsletter-row{display:flex; gap:8px;}
+  .newsletter-row input{flex:1; min-width:0; padding:12px 14px; border-radius:100px; border:1px solid rgba(250,246,239,.25); background:transparent; color:#fff; font-family:inherit; font-size:13px; outline:none; transition:.3s;}
+  .newsletter-row input:focus{border-color:var(--gold-light);}
+  .newsletter-row button{width:42px; height:42px; border-radius:50%; background:var(--gold-deep); border:none; color:var(--cream); cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:.3s var(--ease);}
+  .newsletter-row button:hover{background:var(--gold); transform:scale(1.06);}
+  .newsletter-row svg{width:16px; height:16px; stroke:var(--cream); fill:none; stroke-width:2;}
+
+  @media (max-width:1080px){
+    .stats-grid{grid-template-columns:repeat(2,1fr); row-gap:34px;}
+    .values-grid{grid-template-columns:1fr 1fr;}
+    .gallery-grid{grid-template-columns:repeat(3,1fr);}
+    .footer-grid{grid-template-columns:1fr 1fr; row-gap:36px;}
+    .quote-block{grid-template-columns:1fr; padding:26px;}
+    .quote-visual img{aspect-ratio:16/9;}
+    .quote-copy{padding:10px 6px 20px;}
+  }
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    section{padding:90px 0;}
+    .origin-grid{grid-template-columns:1fr; gap:90px;}
+    .origin-visual{order:2;}
+    .origin-visual .main-img img{height:420px;}
+    .tl-body{grid-template-columns:1fr;}
+    .tl-body img{height:200px;}
+    .press-inner{flex-direction:column; align-items:flex-start; gap:26px;}
+    .press-logos{gap:34px;}
+    .process-grid{grid-template-columns:1fr; gap:50px;}
+    .process-item{padding:0;}
+    .process-item:not(:last-child)::after{display:none;}
+    .commit-grid{grid-template-columns:1fr; gap:50px;}
+    .commit-visual{order:-1;}
+    .commit-visual img{height:360px;}
+  }
+  @media (max-width:680px){
+    .wrap{padding:0 20px;}
+    nav.wrap{padding:16px 20px;}
+    .hero{min-height:88vh;}
+    .stats-band{padding:44px 24px; border-radius:24px;}
+    .stats-grid{grid-template-columns:1fr 1fr; gap:28px;}
+    .values-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr; grid-auto-rows:140px;}
+    .g-item.wide{grid-column:span 2;}
+    .timeline::before, .timeline::after{left:36px;}
+    .tl-item{grid-template-columns:36px 1fr; gap:20px;}
+    .tl-dot{left:32px;}
+    .tl-year{font-size:15px; text-align:left;}
+    .footer-grid{grid-template-columns:1fr; gap:34px;}
+    .film{aspect-ratio:4/5; border-radius:20px;}
+    .film-copy{left:20px; right:20px; bottom:20px; flex-direction:column; align-items:flex-start;}
+    .origin-visual .float-img{width:52%;}
+    .origin-visual .float-1{left:-20px; bottom:-30px;}
+    .origin-visual .float-badge{width:88px; height:88px; font-size:11px; top:-16px; right:-16px;}
+    .cta-banner{min-height:340px;}
+    .hero-mute{right:20px; bottom:20px; width:40px; height:40px;}
+    .commit-badge{left:16px; bottom:16px; padding:14px 18px;}
+    .commit-badge b{font-size:22px;}
+  }
+  @media (max-width:420px){
+    .hero-content h1{font-size:38px !important;}
+    .gallery-grid{gap:10px;}
+    .hero-founder-badge .role{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="topbar">
+  <div class="topbar-track">
+    <span><b>FREE SHIPPING ON ORDERS OVER $120</b></span><span><b>CRAFTED SINCE 2019</b></span><span>USE CODE GOLD10</span><span><b>FOUNDED BY JOSEPH GOLD</b></span>
+    <span><b>FREE SHIPPING ON ORDERS OVER $120</b></span><span><b>CRAFTED SINCE 2019</b></span><span>USE CODE GOLD10</span><span><b>FOUNDED BY JOSEPH GOLD</b></span>
+  </div>
+</div>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="#" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="19" stroke="#B3874F" stroke-width="1.4"/>
+        <path d="M20 8 C14 14, 14 22, 20 32 C26 22, 26 14, 20 8Z" fill="#B3874F"/>
+        <circle cx="20" cy="19" r="2.6" fill="#211d19"/>
+      </svg>
+      <span>
+        <span class="logo-text">GOLD <b>&</b> DEV</span>
+        <span class="logo-sub">Modern Wardrobe Co.</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Women</a></li>
+      <li><a href="#origin">Our Story</a></li>
+      <li><a href="men.html">Men</a></li>
+      <li><a href="#makers">The Makers</a></li>
+      <li><a href="./contact.html" class="active">Contact</a></li>
+    </ul>
+    <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Shop</a>
+    <a href="#origin">Our Story</a>
+    <a href="#timeline">Journey</a>
+    <a href="#makers">The Makers</a>
+   
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding:0;">
+    <div class="hero-video-wrap">
+      <video src="https://www.pexels.com/download/video/9153883/" controls autoplay loop muted>
+        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+        <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <button class="hero-play-fallback" id="heroPlayFallback" aria-label="Play video">
+        <svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>
+        <span></span>
+      </button>
+    </div>
+    <div class="hero-content">
+      <span class="eyebrow">Our Story</span>
+      <h1>
+        <span class="line"><span>Made with <em>intention,</em></span></span>
+        <span class="line"><span>Wecome TO Joseph Gold Story</span></span>
+      </h1>
+      <p>What started as one tailor's idea for better-made basics has grown into a wardrobe worn in 120+ countries — without losing sight of why we started.</p>
+      <div class="hero-founder-badge">
+        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&q=80&auto=format&fit=crop" alt="Joseph Gold">
+        <span>
+          <span class="name">Joseph Gold</span>
+          <span class="role">Founder & Owner</span>
+        </span>
+      </div>
+    </div>
+    <button class="hero-mute" id="heroMuteBtn" aria-label="Toggle sound">
+      <svg id="muteIconOn" viewBox="0 0 24 24" style="display:none;"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19 6a9 9 0 0 1 0 12"/></svg>
+      <svg id="muteIconOff" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>
+    </button>
+    <div class="scroll-cue"><span>Scroll</span><div class="line"></div></div>
+  </section>
+
+  <section class="press-strip reveal">
+    <div class="wrap press-inner">
+      <span class="press-label">As worn & featured in</span>
+      <div class="press-logos">
+        <span>VOGUE</span>
+        <span>GQ</span>
+        <span>Elle</span>
+        <span>Monocle</span>
+        <span>Highsnobiety</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="origin">
+    <div class="wrap">
+      <div class="origin-grid">
+        <div class="origin-visual reveal-l">
+          <div class="main-img">
+            <img src="https://images.unsplash.com/photo-1521369909029-2afed882baee?w=900&q=80&auto=format&fit=crop" alt="Founder in the original studio">
+          </div>
+          <div class="float-img float-1">
+            <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500&q=80&auto=format&fit=crop" alt="Early fabric sourcing">
+          </div>
+          <div class="float-badge">Est.<br>2019</div>
+        </div>
+        <div class="origin-copy reveal-r">
+          <span class="eyebrow">How it started</span>
+          <h2>A small studio, one loom, and a stubborn idea</h2>
+          <p>Gold & Dev began in a two-room studio above a fabric market, where our founder spent evenings unpicking cheap seams from off-the-rack basics and asking why "affordable" always seemed to mean "disposable."</p>
+          <p>The first collection was eleven pieces, cut and finished by hand, sold directly from a single web page. No investors, no warehouse — just fabric we trusted and customers who noticed the difference.</p>
+          <p>That same stubbornness is still the whole business model: fewer, better pieces, made by people we know, priced honestly.</p>
+          <div class="signature">
+            <span class="sig-text">J. Gold</span>
+            <span>Joseph Gold — Founder & Owner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="stats-band reveal">
+        <div class="stats-grid stagger">
+          <div class="stat"><b class="counter" data-target="2019" data-plain="true">0</b><span>Founded</span></div>
+          <div class="stat"><b class="counter" data-target="48" data-suffix="K+">0</b><span>Customers Worldwide</span></div>
+          <div class="stat"><b class="counter" data-target="120" data-suffix="+">0</b><span>Countries Shipped</span></div>
+          <div class="stat"><b class="counter" data-target="4.9" data-suffix="★" data-decimal="true">0</b><span>Average Rating</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Milestones</span>
+          <h2 style="margin-top:12px;">The journey so far</h2>
+        </div>
+        <p>Six years in, still run by the same principles we opened with — just with a few more hands on deck.</p>
+      </div>
+
+      <div class="timeline" id="timelineTrack">
+        <div class="tl-item reveal">
+          <div class="tl-year">2019</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div>
+              <h3>The first collection</h3>
+              <p>Eleven pieces, hand-finished in a two-room studio, sold from a single page with no ad budget — just word of mouth.</p>
+            </div>
+            <video src="https://www.pexels.com/download/video/10544162/" alt="First collection 2019" width="100%" style="border-radius: 40px;" controls loop autoplay muted>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-year">2021</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div>
+              <h3>Our first workshop</h3>
+              <p>Demand outgrew the studio. We partnered with a family-run workshop that still cuts every piece we ship today.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=500&q=80&auto=format&fit=crop" alt="Workshop 2021">
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-year">2023</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div>
+              <h3>Shipping worldwide</h3>
+              <p>We shipped our first international order and never looked back — now worn in more than 120 countries.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?w=500&q=80&auto=format&fit=crop" alt="Global shipping 2023">
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-year">2026</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div>
+              <h3>Today</h3>
+              <p>A small, deliberately-sized team, one flagship studio, and the same rule we started with: nothing ships that we wouldn't wear ourselves.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=500&q=80&auto=format&fit=crop" alt="Team today 2026">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">What we stand for</span>
+          <h2 style="margin-top:12px;">The values behind every piece</h2>
+        </div>
+      </div>
+      <div class="values-grid reveal stagger">
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg></div>
+          <h3>Honest craft</h3>
+          <p>Every fabric is sourced for how it wears in year three, not just how it photographs on day one.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg></div>
+          <h3>People first</h3>
+          <p>We work with the same small workshops year after year — fair pay, steady orders, no race to the bottom.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg></div>
+          <h3>Made to last</h3>
+          <p>Fewer, better pieces — designed to be repaired and re-worn, not replaced every season.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M3 12l7 7L21 5"/></svg></div>
+          <h3>Straight talk</h3>
+          <p>Real prices, real fabric content, real return policy. No fine print designed to trip you up.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">How it's made</span>
+          <h2 style="margin-top:12px;">From raw fabric to finished piece</h2>
+        </div>
+        <p>Three steps, the same three steps every single time — nothing skipped, nothing rushed.</p>
+      </div>
+      <div class="process-grid reveal stagger">
+        <div class="process-item">
+          <span class="process-num">01</span>
+          <div class="process-img"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&q=80&auto=format&fit=crop" alt="Sourcing fabric"></div>
+          <h3>Source</h3>
+          <p>We choose fabric mills we've worked with for years, selected for how the cloth ages — not just how it looks off the bolt.</p>
+        </div>
+        <div class="process-item">
+          <span class="process-num">02</span>
+          <div class="process-img"><img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=600&q=80&auto=format&fit=crop" alt="Cutting pattern"></div>
+          <h3>Cut & construct</h3>
+          <p>Every pattern is cut and sewn by the same small workshop team, piece by piece, with construction checked at every stage.</p>
+        </div>
+        <div class="process-item">
+          <span class="process-num">03</span>
+          <div class="process-img"><img src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=600&q=80&auto=format&fit=crop" alt="Final fitting"></div>
+          <h3>Finish & fit</h3>
+          <p>A final hand-finish and fitting pass before anything ships — if it wouldn't pass, it doesn't leave the studio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="makers">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Meet the makers</span>
+          <h2 style="margin-top:12px;">The hands behind every piece</h2>
+        </div>
+        <p>A short film inside the workshop — the cutting, the fitting, the finishing that never makes it to a product photo.</p>
+      </div>
+
+      <div class="film reveal">
+        <video src="https://www.pexels.com/download/video/9480068/" width="100%" controls loop autoplay muted></video>
+        <source src="https://www.pexels.com/video/models-on-a-field-8943612/">
+          <!-- <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+          <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4"> -->
+          Your browser does not support the video tag.
+        </video>
+        <div class="film-overlay"></div>
+        <div class="film-copy">
+          <div>
+            <span class="eyebrow">Inside the workshop</span>
+            <!-- <h3>Six years, same hands, same standards</h3> -->
+          </div>
+          <button class="play-btn" id="filmPlayBtn" aria-label="Play video">
+            <svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="quote-block reveal">
+        <div class="quote-visual">
+          <img src="./projects/IMG_20260710_131951.jpg" alt="Founder portrait" width="100%^">
+        </div>
+        <div class="quote-copy">
+          <span class="quote-mark">"</span>
+          <p class="quote-text">We never set out to be the biggest wardrobe brand — just the one you trust enough to keep coming back to, year after year.</p>
+          <div class="quote-person">
+            <b>JOSEPH GOLD</b>
+            <span>Founder & Owner, Gold & Dev</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="commit-section">
+    <div class="wrap">
+      <div class="commit-grid">
+        <div class="commit-copy reveal-l">
+          <span class="eyebrow">Our commitment</span>
+          <h2>What we promise, piece by piece</h2>
+          <p class="commit-lead">Every decision — fabric, factory, packaging — gets weighed against one question: would we be proud to explain this to a customer? Here's what that looks like in practice.</p>
+          <ul class="commit-list">
+            <li>
+              <div class="commit-tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></div>
+              <div><h4>Traceable fabric</h4><p>Every textile is sourced from mills we've personally visited and vetted.</p></div>
+            </li>
+            <li>
+              <div class="commit-tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></div>
+              <div><h4>Fair-wage workshops</h4><p>The same small, family-run workshops we started with in 2019, paid fairly and on time.</p></div>
+            </li>
+            <li>
+              <div class="commit-tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></div>
+              <div><h4>Low-waste packaging</h4><p>Recycled mailers, soy-based inks, and zero single-use plastic in every shipment.</p></div>
+            </li>
+            <li>
+              <div class="commit-tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></div>
+              <div><h4>Repair, not replace</h4><p>Free repairs on any Gold & Dev piece for its first three years of wear.</p></div>
+            </li>
+          </ul>
+        </div>
+        <div class="commit-visual reveal-r">
+          <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&q=80&auto=format&fit=crop" alt="Sustainable fabric sourcing">
+          <div class="commit-badge">
+            <b>100%</b>
+            <span>Traceable Materials</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">In the studio</span>
+          <h2 style="margin-top:12px;">Moments from behind the scenes</h2>
+        </div>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="g-item span2"><img src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=700&q=80&auto=format&fit=crop" alt="Studio fitting"></div>
+        <div class="g-item"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=700&q=80&auto=format&fit=crop" alt="Wool sourcing"></div>
+        <div class="g-item"><img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?w=700&q=80&auto=format&fit=crop" alt="Denim cutting"></div>
+        <div class="g-item wide"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1000&q=80&auto=format&fit=crop" alt="Lookbook shoot"></div>
+        <div class="g-item"><img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=700&q=80&auto=format&fit=crop" alt="Pattern making"></div>
+        <div class="g-item span2"><img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=700&q=80&auto=format&fit=crop" alt="Full team photo"></div>
+        <div class="g-item"><img src="https://images.unsplash.com/photo-1521369909029-2afed882baee?w=700&q=80&auto=format&fit=crop" alt="Founder at work"></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="cta-banner reveal">
+        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=1400&q=80&auto=format&fit=crop" alt="Shop the collection">
+        <div class="cta-inner">
+          <span class="eyebrow">Ready when you are</span>
+          <h2>Now you know the story — come see the collection</h2>
+          <div class="cta-row">
+            <a href="#" class="btn btn-primary">Shop the Collection</a>
+            <a href="#" class="btn btn-outline">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="foot-logo">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="19" stroke="#B3874F" stroke-width="1.4"/>
+            <path d="M20 8 C14 14, 14 22, 20 32 C26 22, 26 14, 20 8Z" fill="#B3874F"/>
+            <circle cx="20" cy="19" r="2.6" fill="#211d19"/>
+          </svg>
+          <span>
+            <span class="logo-text">GOLD <b>&</b> DEV</span>
+            <span class="logo-sub">Modern Wardrobe Co.</span>
+          </span>
+        </div>
+        <p>Considered clothing, made by people we know, worn in over 120 countries. Still run the way we started — one honest piece at a time.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 17c1-3 1.3-6 2-9a2.5 2.5 0 1 1 4 2c0 2-1 4-3 4"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3-3.46"/><path d="M14 4c.3 2 2 3.6 4 3.8"/></svg></a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">Womenswear</a></li>
+          <li><a href="#">Menswear</a></li>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Sale</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns & Exchanges</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#origin">Our Story</a></li>
+          <li><a href="#makers">The Makers</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Stay in touch</h4>
+        <p style="font-size:14px; line-height:1.6; margin-bottom:16px;">Subscribe for early access to drops and private sales.</p>
+        <div class="newsletter-row">
+          <input type="email" placeholder="Email">
+          <button aria-label="Subscribe"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 Gold & Dev. All rights reserved. <span class="foot-owner">Founded & owned by <b>Joseph Gold</b>.</span></span>
+      <div class="legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* header + mobile menu */
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const siteHeader = document.getElementById('siteHeader');
+  burgerBtn.addEventListener('click', () => {
+    burgerBtn.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burgerBtn.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }));
+
+  /* scroll progress + header shrink */
+  const scrollProgress = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    scrollProgress.style.width = pct + '%';
+    siteHeader.classList.toggle('scrolled', h.scrollTop > 20);
+  }, { passive:true });
+
+  /* scroll reveal */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => io.observe(el));
+
+  /* timeline items + progress line */
+  const tlItems = document.querySelectorAll('.tl-item');
+  const tlIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.4 });
+  tlItems.forEach(el => tlIo.observe(el));
+
+  const timelineTrack = document.getElementById('timelineTrack');
+  window.addEventListener('scroll', () => {
+    const rect = timelineTrack.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const total = rect.height;
+    let progressed = vh * 0.75 - rect.top;
+    progressed = Math.max(0, Math.min(progressed, total));
+    timelineTrack.style.setProperty('--tl-progress', (progressed/total*100) + '%');
+  }, { passive:true });
+
+  /* animated counters */
+  const counters = document.querySelectorAll('.counter');
+  const counterIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const isDecimal = el.dataset.decimal === 'true';
+      const isPlain = el.dataset.plain === 'true';
+      let start = 0;
+      const duration = 1400;
+      const startTime = performance.now();
+      function tick(now){
+        const p = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        let val = isPlain ? target : start + (target - start) * eased;
+        if (isPlain) { val = Math.floor(target * eased); }
+        el.textContent = isDecimal ? val.toFixed(1) + suffix : Math.floor(val) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = isDecimal ? target.toFixed(1) + suffix : Math.floor(target) + suffix;
+      }
+      requestAnimationFrame(tick);
+      counterIo.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(el => counterIo.observe(el));
+
+  /* hero mute toggle */
+  const heroVideo = document.getElementById('heroVideo');
+  const heroMuteBtn = document.getElementById('heroMuteBtn');
+  const muteIconOn = document.getElementById('muteIconOn');
+  const muteIconOff = document.getElementById('muteIconOff');
+  heroMuteBtn.addEventListener('click', () => {
+    heroVideo.muted = !heroVideo.muted;
+    muteIconOn.style.display = heroVideo.muted ? 'none' : 'block';
+    muteIconOff.style.display = heroVideo.muted ? 'block' : 'none';
+  });
+
+  /* force hero video to actually play - some browsers block autoplay until a gesture */
+  const heroPlayFallback = document.getElementById('heroPlayFallback');
+  function tryPlayHero(){
+    const p = heroVideo.play();
+    if (p !== undefined) {
+      p.then(() => { heroPlayFallback.classList.remove('show'); })
+       .catch(() => { heroPlayFallback.classList.add('show'); });
+    }
+  }
+  tryPlayHero();
+  window.addEventListener('load', tryPlayHero);
+  document.addEventListener('visibilitychange', () => { if(!document.hidden) tryPlayHero(); });
+  heroPlayFallback.addEventListener('click', () => {
+    heroVideo.muted = true;
+    muteIconOn.style.display = 'none';
+    muteIconOff.style.display = 'block';
+    heroVideo.play();
+    heroPlayFallback.classList.remove('show');
+  });
+  document.body.addEventListener('click', function onceClick(){
+    if (heroVideo.paused) tryPlayHero();
+  });
+
+  /* subtle hero parallax on scroll */
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    if (scrolled < window.innerHeight) {
+      heroVideo.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.15}px)) scale(1.05)`;
+    }
+  }, { passive:true });
+
+  /* film video play/pause */
+  const filmVideo = document.getElementById('filmVideo');
+  const filmPlayBtn = document.getElementById('filmPlayBtn');
+  filmPlayBtn.addEventListener('click', () => {
+    if (filmVideo.paused) {
+      filmVideo.muted = false;
+      filmVideo.play();
+      filmPlayBtn.innerHTML = '<svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>';
+    } else {
+      filmVideo.pause();
+      filmPlayBtn.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>';
+    }
+  });
+</script>
+
+</body>
+</html>

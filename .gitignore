@@ -1,0 +1,25 @@
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node / dependencies
+node_modules/
+npm-debug.log
+
+# Firebase
+.firebase/
+
+# Environment
+.env
+.env.local
+
+# Misc
+*.log
+

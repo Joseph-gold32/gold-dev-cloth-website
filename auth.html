@@ -1,0 +1,457 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLD & DEV LOGIN FROM</title>
+    <link rel="stylesheet" href="./sign.css">
+</head>
+<body>
+    <div class="page">
+
+  <!-- VISUAL SIDE -->
+  <div class="visual">
+    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&q=80&auto=format&fit=crop" alt="GOLD & DEV styled look">
+    <div class="visual-top">
+      <div class="visual-logo">
+        <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="19" stroke="#B3874F" stroke-width="1.4"/>
+          <path d="M20 8 C14 14, 14 22, 20 32 C26 22, 26 14, 20 8Z" fill="#B3874F"/>
+          <circle cx="20" cy="19" r="2.6" fill="#211d19"/>
+        </svg>
+        <span>
+          <span class="logo-text">GOLD <b>&</b> DEV</span>
+          <span class="logo-sub">Modern Wardrobe Co.</span>
+        </span>
+      </div>
+    </div>
+    <div class="visual-bottom">
+      <span class="eyebrow">Members Only</span>
+      <h2>Unlock early access to every drop</h2>
+      <p>Sign in to track orders, save favorites, and get first pick of new arrivals before anyone else.</p>
+      <div class="visual-stats">
+        <div><b>48K+</b><span>Members</span></div>
+        <div><b>4.9★</b><span>Avg Rating</span></div>
+        <div><b>120+</b><span>Countries</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM SIDE -->
+  <div class="form-side">
+    <div class="form-shell">
+
+      <div class="mobile-logo">
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUWyY7d3yAK8OWP2oyBtJTH8BWEkLigaLAIj2jiuq69Q&s" alt="" width="30%" style="border-radius: 50%; border: 2px solid #B3874F; padding: 2px; margin-right: 10px; height: 50px;" />
+        <!-- <svg width="34" height="34" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="19" stroke="#B3874F" stroke-width="1.4"/>
+          <path d="M20 8 C14 14, 14 22, 20 32 C26 22, 26 14, 20 8Z" fill="#B3874F"/>
+          <circle cx="20" cy="19" r="2.6" fill="#faf6ef"/>
+        </svg> -->
+        <span>
+          <span class="logo-text">GOLD <b>&</b> DEV</span>
+          <span class="logo-sub">Modern Wardrobe Co.</span>
+        </span>
+      </div>
+
+      <div class="auth-tabs reveal">
+        <button class="auth-tab active" id="tabSignin">Sign In</button>
+        <button class="auth-tab" id="tabSignup">Create Account</button>
+      </div>
+
+      <div id="toast" class="toast">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12l7 7L21 5"/></svg>
+        <span id="toastMsg">Success</span>
+      </div>
+
+      <!-- SIGN IN -->
+      <form class="auth-form" id="signinForm" novalidate>
+        <div class="auth-head reveal d1">
+          <span class="eyebrow">Welcome back</span>
+          <h1>Sign in to your account</h1>
+          <p>Enter your details below to expore Gold & Dev</p>
+        </div>
+
+        <div class="field reveal d2">
+          <label for="signinEmail">Email address</label>
+          <div class="field-input" id="signinEmailWrap">
+            <input type="email" id="signinEmail" placeholder="you@example.com" autocomplete="email">
+          </div>
+          <span class="field-error" id="signinEmailError">Please enter a valid email address.</span>
+        </div>
+
+        <div class="field reveal d2">
+          <label for="signinPassword">Password</label>
+          <div class="field-input" id="signinPasswordWrap">
+            <input type="password" id="signinPassword" placeholder="Enter your password" autocomplete="current-password">
+            <button type="button" class="toggle-pass" data-target="signinPassword" aria-label="Show password">
+              <svg viewBox="0 0 24 24"><path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <span class="field-error" id="signinPasswordError">Password must be at least 6 characters.</span>
+        </div>
+
+        <div class="field-row reveal d2">
+          <label class="remember"><input type="checkbox" id="rememberMe"> Remember me</label>
+          <a href="#" class="forgot-link" id="forgotLink">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary reveal d3" id="signinSubmit">
+          <span class="spinner"></span>
+          <span class="btn-label">Sign In</span>
+        </button>
+
+        <div class="divider reveal d3">or continue with</div>
+        <div class="social-auth reveal d3">
+          <button type="button" id="googleSignin">
+            <svg viewBox="0 0 24 24"><path fill="#EA4335" d="M12 10.2v3.9h5.5c-.24 1.4-1.7 4.2-5.5 4.2-3.3 0-6-2.7-6-6.1s2.7-6.1 6-6.1c1.9 0 3.1.8 3.9 1.5l2.6-2.5C16.9 3.4 14.7 2.4 12 2.4 6.9 2.4 2.7 6.6 2.7 12S6.9 21.6 12 21.6c6.9 0 9.3-4.9 9.3-7.4 0-.5-.05-.9-.13-1.3H12Z"/></svg>
+            Goggle
+          </button>
+        </div>
+
+        <div class="switch reveal d3">Don't have an account? <button type="button" id="goSignup">Create one</button></div>
+      </form>
+
+      <!-- SIGN UP -->
+      <form class="auth-form hidden" id="signupForm" novalidate>
+        <div class="auth-head">
+          <span class="eyebrow">Join GOLD & DEV</span>
+          <h1>Create your account</h1>
+          <p>Sign up in seconds and get 10% off your first order.</p>
+        </div>
+
+        <div class="field">
+          <label for="signupName">Full name</label>
+          <div class="field-input" id="signupNameWrap">
+            <input type="text" id="signupName" placeholder="Jane Doe" autocomplete="name">
+          </div>
+          <span class="field-error" id="signupNameError">Please enter your full name.</span>
+        </div>
+
+        <div class="field">
+          <label for="signupEmail">Email address</label>
+          <div class="field-input" id="signupEmailWrap">
+            <input type="email" id="signupEmail" placeholder="you@example.com" autocomplete="email">
+          </div>
+          <span class="field-error" id="signupEmailError">Please enter a valid email address.</span>
+        </div>
+
+        <div class="field">
+          <label for="signupPassword">Password</label>
+          <div class="field-input" id="signupPasswordWrap">
+            <input type="password" id="signupPassword" placeholder="Create a password" autocomplete="new-password">
+            <button type="button" class="toggle-pass" data-target="signupPassword" aria-label="Show password">
+              <svg viewBox="0 0 24 24"><path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <span class="field-error" id="signupPasswordError">Use at least 6 characters.</span>
+        </div>
+
+        <div class="field">
+          <label for="signupConfirm">Confirm password</label>
+          <div class="field-input" id="signupConfirmWrap">
+            <input type="password" id="signupConfirm" placeholder="Re-enter your password" autocomplete="new-password">
+            <button type="button" class="toggle-pass" data-target="signupConfirm" aria-label="Show password">
+              <svg viewBox="0 0 24 24"><path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <span class="field-error" id="signupConfirmError">Passwords do not match.</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="signupSubmit">
+          <span class="spinner"></span>
+          <span class="btn-label">Create Account</span>
+        </button>
+
+        <div class="divider">or continue with</div>
+        <div class="social-auth">
+          <button type="button" id="googleSignup">
+            <svg viewBox="0 0 24 24"><path fill="#EA4335" d="M12 10.2v3.9h5.5c-.24 1.4-1.7 4.2-5.5 4.2-3.3 0-6-2.7-6-6.1s2.7-6.1 6-6.1c1.9 0 3.1.8 3.9 1.5l2.6-2.5C16.9 3.4 14.7 2.4 12 2.4 6.9 2.4 2.7 6.6 2.7 12S6.9 21.6 12 21.6c6.9 0 9.3-4.9 9.3-7.4 0-.5-.05-.9-.13-1.3H12Z"/></svg>
+            Google
+          </button>
+        </div>
+
+        <div class="switch">Already have an account? <button type="button" id="goSignin">Sign in</button></div>
+      </form>
+
+      <p class="fine-print">Welcome to GOLD & DEV's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+    </div>
+  </div>
+</div>
+<!-- ===================== FIREBASE ===================== -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signInWithPopup,
+    signInWithRedirect,
+    getRedirectResult,
+    GoogleAuthProvider,
+    sendPasswordResetEmail,
+    updateProfile,
+    setPersistence,
+    browserLocalPersistence,
+    browserSessionPersistence,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  /* --------------------------------------------------------
+     1) PASTE YOUR OWN FIREBASE CONFIG BELOW
+     Get this from: Firebase Console → Project Settings → General
+     → "Your apps" → Web app → SDK setup and configuration
+  -------------------------------------------------------- */
+  const firebaseConfig = {
+    apiKey: "AIzaSyBwobDBwNYU2rXCYKWQrwPMjiefeKE96u0",
+    authDomain: "gold-dev-website.firebaseapp.com",
+    projectId: "gold-dev-website",
+    storageBucket: "gold-dev-website.firebasestorage.app",
+    messagingSenderId: "236126965828",
+    appId: "1:236126965828:web:217eef67a2a885ee4fec11",
+    measurementId: "G-04EGK4QHQ3"
+  };
+
+  /* --------------------------------------------------------
+     2) In the Firebase Console, enable these sign-in methods:
+     Authentication → Sign-in method → Email/Password (ON)
+     Authentication → Sign-in method → Google (ON)
+  -------------------------------------------------------- */
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
+  googleProvider.addScope('profile');
+  googleProvider.addScope('email');
+  googleProvider.setCustomParameters({ prompt: 'select_account' });
+
+  // Where to send people after a successful sign-in / sign-up.
+  const REDIRECT_URL = `${window.location.origin}/index.html`;
+
+  function persistLocalSession(name, email) {
+    localStorage.setItem('novaoak_session', JSON.stringify({ name, email }));
+  }
+
+  function completeGoogleFlow(name, email) {
+    persistLocalSession(name, email);
+    showToast('Signed in successfully. Redirecting…', false);
+    setTimeout(() => { window.location.href = REDIRECT_URL; }, 700);
+  }
+
+  // ---------- DOM refs ----------
+  const tabSignin = document.getElementById('tabSignin');
+  const tabSignup = document.getElementById('tabSignup');
+  const signinForm = document.getElementById('signinForm');
+  const signupForm = document.getElementById('signupForm');
+  const goSignup = document.getElementById('goSignup');
+  const goSignin = document.getElementById('goSignin');
+  const toast = document.getElementById('toast');
+  const toastMsg = document.getElementById('toastMsg');
+
+  function switchTo(which){
+    const toSignup = which === 'signup';
+    tabSignin.classList.toggle('active', !toSignup);
+    tabSignup.classList.toggle('active', toSignup);
+    signinForm.classList.toggle('hidden', toSignup);
+    signupForm.classList.toggle('hidden', !toSignup);
+    hideToast();
+    clearAllErrors();
+  }
+  tabSignin.addEventListener('click', () => switchTo('signin'));
+  tabSignup.addEventListener('click', () => switchTo('signup'));
+  goSignup.addEventListener('click', () => switchTo('signup'));
+  goSignin.addEventListener('click', () => switchTo('signin'));
+
+  function showToast(msg, isError){
+    toast.classList.toggle('error', !!isError);
+    toastMsg.textContent = msg;
+    toast.classList.add('show');
+  }
+  function hideToast(){ toast.classList.remove('show'); }
+
+  function setError(wrapId, errId, show, customMsg){
+    document.getElementById(wrapId).classList.toggle('error', show);
+    const errEl = document.getElementById(errId);
+    if (customMsg) errEl.textContent = customMsg;
+    errEl.style.display = show ? 'block' : 'none';
+  }
+  function clearAllErrors(){
+    ['signinEmail','signinPassword'].forEach(f => setError(f+'Wrap', f+'Error', false));
+    ['signupName','signupEmail','signupPassword','signupConfirm'].forEach(f => setError(f+'Wrap', f+'Error', false));
+  }
+  function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  function setLoading(btn, isLoading, labelWhenLoading, labelDefault){
+    btn.disabled = isLoading;
+    btn.classList.toggle('loading', isLoading);
+    btn.querySelector('.btn-label').textContent = isLoading ? labelWhenLoading : labelDefault;
+  }
+
+  // ---------- friendly Firebase error messages ----------
+  function friendlyError(err){
+    const code = err && err.code ? err.code : '';
+    switch (code) {
+      case 'auth/invalid-email': return 'Please enter a valid email address.';
+      case 'auth/user-disabled': return 'This account has been disabled.';
+      case 'auth/user-not-found':
+      case 'auth/wrong-password':
+      case 'auth/invalid-credential': return 'Incorrect email or password. Please try again.';
+      case 'auth/email-already-in-use': return 'An account with this email already exists.';
+      case 'auth/weak-password': return 'Please choose a stronger password (6+ characters).';
+      case 'auth/too-many-requests': return 'Too many attempts. Please wait a moment and try again.';
+      case 'auth/popup-closed-by-user': return 'Sign-in was cancelled.';
+      case 'auth/network-request-failed': return 'Network error. Please check your connection.';
+      case 'auth/unauthorized-domain':
+        return 'This site is being opened from localhost, so Firebase needs localhost and 127.0.0.1 added to Authentication → Settings → Authorized domains.';
+      default: return 'Something went wrong. Please try again.';
+    }
+  }
+
+  // ---------- password show/hide ----------
+  document.querySelectorAll('.toggle-pass').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const input = document.getElementById(btn.dataset.target);
+      input.type = input.type === 'password' ? 'text' : 'password';
+    });
+  });
+
+  // ---------- SIGN IN ----------
+  signinForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideToast();
+    const email = document.getElementById('signinEmail').value.trim();
+    const password = document.getElementById('signinPassword').value;
+    const remember = document.getElementById('rememberMe').checked;
+
+    let valid = true;
+    if (!isValidEmail(email)) { setError('signinEmailWrap','signinEmailError', true); valid = false; }
+    else setError('signinEmailWrap','signinEmailError', false);
+    if (password.length < 6) { setError('signinPasswordWrap','signinPasswordError', true); valid = false; }
+    else setError('signinPasswordWrap','signinPasswordError', false);
+    if (!valid) return;
+
+    const submitBtn = document.getElementById('signinSubmit');
+    setLoading(submitBtn, true, 'Signing in…', 'Sign In');
+
+    try {
+      await setPersistence(auth, remember ? browserLocalPersistence : browserSessionPersistence);
+      await signInWithEmailAndPassword(auth, email, password);
+      showToast('Welcome back! Redirecting…', false);
+      setTimeout(() => { window.location.href = REDIRECT_URL; }, 700);
+    } catch (err) {
+      showToast(friendlyError(err), true);
+    } finally {
+      setLoading(submitBtn, false, 'Signing in…', 'Sign In');
+    }
+  });
+
+  // ---------- SIGN UP ----------
+  signupForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideToast();
+    const name = document.getElementById('signupName').value.trim();
+    const email = document.getElementById('signupEmail').value.trim();
+    const password = document.getElementById('signupPassword').value;
+    const confirm = document.getElementById('signupConfirm').value;
+
+    let valid = true;
+    if (name.length < 2) { setError('signupNameWrap','signupNameError', true); valid = false; }
+    else setError('signupNameWrap','signupNameError', false);
+    if (!isValidEmail(email)) { setError('signupEmailWrap','signupEmailError', true); valid = false; }
+    else setError('signupEmailWrap','signupEmailError', false);
+    if (password.length < 6) { setError('signupPasswordWrap','signupPasswordError', true); valid = false; }
+    else setError('signupPasswordWrap','signupPasswordError', false);
+    if (confirm !== password || confirm.length < 6) { setError('signupConfirmWrap','signupConfirmError', true); valid = false; }
+    else setError('signupConfirmWrap','signupConfirmError', false);
+    if (!valid) return;
+
+    const submitBtn = document.getElementById('signupSubmit');
+    setLoading(submitBtn, true, 'Creating account…', 'Create Account');
+
+    try {
+      const cred = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(cred.user, { displayName: name });
+      showToast('Welcome to GOLD & DEV, ' + name.split(' ')[0] + '! Redirecting…', false);
+      setTimeout(() => { window.location.href = REDIRECT_URL; }, 700);
+    } catch (err) {
+      showToast(friendlyError(err), true);
+    } finally {
+      setLoading(submitBtn, false, 'Creating account…', 'Create Account');
+    }
+  });
+
+  // ---------- GOOGLE SIGN-IN ----------
+  async function handleGoogle(){
+    hideToast();
+    const button = document.getElementById('googleSignin') || document.getElementById('googleSignup');
+    if (button) {
+      button.disabled = true;
+      button.classList.add('loading');
+    }
+
+    try {
+      if (window.location.protocol === 'file:') {
+        showToast('Please open this site from Live Server or another local server.', true);
+        return;
+      }
+
+      await setPersistence(auth, browserLocalPersistence);
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      completeGoogleFlow(user.displayName || 'Google User', user.email || '');
+    } catch (err) {
+      const code = err && err.code ? err.code : '';
+      if (code === 'auth/popup-blocked' || code === 'auth/popup-closed-by-user' || code === 'auth/operation-not-supported-in-this-environment') {
+        showToast('Google sign-in is being redirected. Please continue in the browser window.', false);
+        await signInWithRedirect(auth, googleProvider);
+        return;
+      }
+      const message = friendlyError(err);
+      showToast(message, true);
+    } finally {
+      if (button) {
+        button.disabled = false;
+        button.classList.remove('loading');
+      }
+    }
+  }
+  document.getElementById('googleSignin').addEventListener('click', handleGoogle);
+  document.getElementById('googleSignup').addEventListener('click', handleGoogle);
+
+  async function handleRedirectResult(){
+    try {
+      const result = await getRedirectResult(auth);
+      if (result && result.user) {
+        completeGoogleFlow(result.user.displayName || 'Google User', result.user.email || '');
+      }
+    } catch (err) {
+      showToast(friendlyError(err), true);
+    }
+  }
+  handleRedirectResult();
+
+  // ---------- FORGOT PASSWORD ----------
+  document.getElementById('forgotLink').addEventListener('click', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('signinEmail').value.trim();
+    if (!isValidEmail(email)) {
+      setError('signinEmailWrap','signinEmailError', true);
+      showToast('Enter your email above first, then click "Forgot password?"', true);
+      return;
+    }
+    setError('signinEmailWrap','signinEmailError', false);
+    try {
+      await sendPasswordResetEmail(auth, email);
+      showToast('If an account exists for ' + email + ', a reset link has been sent.', false);
+    } catch (err) {
+      showToast(friendlyError(err), true);
+    }
+  });
+
+  // ---------- Already signed in? bounce forward ----------
+  onAuthStateChanged(auth, (user) => {
+    // Uncomment to auto-redirect already-authenticated users:
+    // if (user) window.location.href = REDIRECT_URL;
+  });
+</script>
+</body>
+</html>
