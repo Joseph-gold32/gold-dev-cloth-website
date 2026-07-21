@@ -1,39 +1,51 @@
-# Responsiveness & Navigation Fix TODO
+# Gold & Dev Website — Responsive Fix Progress
 
-## Fix Plan Progress
+## ✅ Completed
 
-### Phase 1: Fix style.css (index.html main stylesheet) ✅
-- [x] Add/fix mobile breakpoints for all sections
-- [x] Fix hero grid, cat-grid, product grid on small screens
-- [x] Fix testimonials, newsletter, footer stacking
-- [x] Add 360px-480px breakpoints
-- [x] Fix img overflow and max-width issues
+### `style.css` (Shared for index.html)
+- [x] Added 768px, 480px, 360px, 320px breakpoints
+- [x] Hero grid stacks on mobile
+- [x] Category grid fully fluid
+- [x] Product grid responsive gaps
+- [x] Testimonial, newsletter, footer stacking
 
-### Phase 2: Fix men.html embedded CSS ✅
-- [x] Add missing 480px breakpoint
-- [x] Fix product grid for small screens
-- [x] Improve category grid on mobile
-- [x] Fix feature grid stacking
+### `men.html`
+- [x] Added 360px, 320px breakpoints  
+- [x] Category/grid sections fluid on mobile
+- [x] Product grid responsive (2-col → 1-col on 360px)
+- [x] Hero, video, testimonials mobile-sized
 
-### Phase 3: Fix skin.html embedded CSS ✅
-- [x] Add 360px breakpoint
-- [x] Fix hero on small screens
-- [x] Fix product grid mobile layout
+### `skin.html`
+- [x] Added 360px, 320px breakpoints
+- [x] Hero grid stacked
+- [x] Category grid single column
+- [x] Product grid, tabs, newsletter, footer fixed
 
-### Phase 4: Fix contact.html embedded CSS ✅
-- [x] Add 480px breakpoint
-- [x] Fix form and info side stacking
-- [x] Improve FAQ mobile layout
+### `contact.html`
+- [x] Added 768px, 480px, 360px, 320px breakpoints
+- [x] Form card and info side stack
+- [x] FAQ accordion mobile-friendly
+- [x] Social icons and map frame sized down
 
-### Phase 5: Fix blog.html embedded CSS ✅
-- [x] Improve small screen support
-- [x] Fix picks grid on mobile
+### `blog.html`
+- [x] Added 480px, 360px, 320px breakpoints
+- [x] Grid collapses properly (3 → 2 → 1 column)
+- [x] Featured post stacks
+- [x] Newsletter, picks, footer fixed
 
-### Phase 6: Fix sign.css ✅
-- [x] Minor responsive improvements
+### `story.html`
+- [x] Added 360px, 320px breakpoints
+- [x] Hero, stats, timeline, values, process sections mobile
+- [x] Film, quote block, gallery, CTA banner sized down
+- [x] Footer stacks
 
-### Phase 7: Commit & Push
-- [ ] Stage all changes
-- [ ] Commit with descriptive message
-- [ ] Push to GitHub main branch
+### `auth.html` / `sign.css`
+- [x] Added 480px, 360px, 320px breakpoints
+- [x] Form inputs, tabs, buttons sized down
+- [x] Social auth stacks vertically on small screens
+
+## Notes
+- The "not showing other pages" issue is likely because not all `.html` files were committed/pushed to GitHub. Run `git add . && git commit -m "Add all pages + responsive fixes" && git push` to deploy all pages.
+- All images use responsive `max-width: 100%` and `object-fit: cover` where applicable.
+- All grids use `grid-template-columns: repeat(auto-fill, ...)` or explicit breakpoint overrides.
 

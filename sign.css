@@ -188,3 +188,50 @@
     .mobile-logo{display:flex;}
     .form-side{padding:36px 24px;}
   }
+  @media (max-width: 480px){
+    .form-side{padding:28px 18px;}
+    .auth-head h1{font-size:24px;}
+    .auth-head p{font-size:13px;}
+    .auth-form{gap:14px;}
+    .auth-tabs{margin-bottom:28px; padding:4px;}
+    .auth-tab{font-size:12px; padding:10px 10px;}
+    .field-input input{font-size:13.5px; padding:12px 14px;}
+    .field-row{flex-direction:column; align-items:flex-start; gap:10px;}
+    .social-auth{flex-direction:column;}
+    .switch{margin-top:20px; font-size:13px;}
+    .mobile-logo{margin-bottom:32px;}
+    .mobile-logo img{height:40px !important;}
+    .mobile-logo .logo-text{font-size:17px;}
+    .mobile-logo .logo-sub{font-size:8px;}
+    .fine-print{font-size:11px;}
+    .auth-head{margin-bottom:22px;}
+    .auth-head h1{font-size:22px;}
+    .btn{font-size:13.5px; padding:13px;}
+  }
+  @media (max-width: 360px){
+    .form-side{padding:20px 14px;}
+    .form-shell{max-width:100%;}
+    .auth-head h1{font-size:20px;}
+    .auth-head p{font-size:12px;}
+    .field-input input{font-size:13px; padding:10px 12px;}
+    .field label{font-size:11.5px;}
+    .btn{font-size:13px; padding:12px;}
+    .social-auth{gap:8px;}
+    .social-auth button{font-size:12px; padding:11px;}
+    .mobile-logo{margin-bottom:24px;}
+    .mobile-logo .logo-text{font-size:15px;}
+    .mobile-logo img{height:34px !important; width:auto;}
+    .auth-tabs{margin-bottom:22px;}
+    .auth-tab{font-size:11.5px; padding:8px 8px;}
+    .divider{font-size:11px; margin:18px 0; gap:10px;}
+    .fine-print{margin-top:16px;}
+    .switch{font-size:12px;}
+    .toast{font-size:12px; padding:10px 14px;}
+  }
+  @media (max-width: 320px){
+    .form-side{padding:16px 10px;}
+    .auth-head h1{font-size:18px;}
+    .field-input input{font-size:12px; padding:9px 10px;}
+    .btn{font-size:12px; padding:10px;}
+    .social-auth button{font-size:11px; padding:9px;}
+  }
