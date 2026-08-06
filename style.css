@@ -51,6 +51,7 @@
   header{
     position:sticky; top:0; z-index:500;
     background:rgba(250,246,239,0.88);
+    -webkit-backdrop-filter:blur(14px);
     backdrop-filter:blur(14px);
     border-bottom:1px solid var(--line);
   }
@@ -279,7 +280,7 @@
   .testi-track::-webkit-scrollbar{display:none;}
   .testi-card{
     scroll-snap-align:start; flex:0 0 340px; background:rgba(250,246,239,.06); border:1px solid rgba(250,246,239,.14);
-    border-radius:20px; padding:30px; backdrop-filter:blur(6px);
+    border-radius:20px; padding:30px; -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
   }
   .testi-stars{color:var(--gold); font-size:15px; margin-bottom:16px; letter-spacing:2px;}
   .testi-card p.quote{font-size:15px; line-height:1.7; color:rgba(250,246,239,.9); margin-bottom:24px; min-height:110px;}
@@ -327,7 +328,7 @@
   /* ---------- auth modal ---------- */
   .auth-overlay{
     position:fixed; inset:0; z-index:2000; background:rgba(33,29,25,0.55);
-    backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center;
+    -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center;
     padding:24px; opacity:0; pointer-events:none; transition:opacity .35s ease;
   }
   .auth-overlay.open{opacity:1; pointer-events:auto;}
@@ -484,6 +485,8 @@
     .mobile-menu{display:flex;}
     .mobile-menu a{padding:14px 20px; font-size:14px;}
     .mobile-menu .btn{margin:12px 20px 20px;}
+    .nav-actions{gap:12px;}
+    #shopNowBtn{display:none;}
     section{padding:60px 0;}
     .hero{padding-top:30px;}
     .hero h1{font-size:clamp(30px,8vw,40px);}
@@ -596,6 +599,7 @@
     .marquee-track span{font-size:13px;}
     .mobile-menu a{padding:12px 14px; font-size:13px;}
     .mobile-menu .btn{margin:10px 14px 16px; font-size:13px; padding:12px 20px;}
+    .nav-actions{gap:8px;}
     .products-cta{margin-top:28px;}
     .products-cta .btn{padding:12px 24px; font-size:13px;}
   }
@@ -684,4 +688,12 @@
     .newsletter h2{font-size:16px;}
     .footer-grid{gap:16px;}
     .testi-card{flex:0 0 180px;}
+    nav.wrap{height:56px;}
+    .logo{gap:8px;}
+    .logo-text{font-size:15px;}
+    .logo-sub{font-size:7.5px;}
+    .nav-actions{gap:6px;}
+    .icon-btn{width:28px; height:28px;}
+    .cart-count{width:14px; height:14px; font-size:8.5px;}
+    .burger{width:30px; height:30px;}
   }

@@ -1,51 +1,34 @@
-# Gold & Dev Website — Responsive Fix Progress
+# Gold & Dev Website — Responsive & Deployment Tasks
 
-## ✅ Completed
+## Progress Tracker
 
-### `style.css` (Shared for index.html)
-- [x] Added 768px, 480px, 360px, 320px breakpoints
-- [x] Hero grid stacks on mobile
-- [x] Category grid fully fluid
-- [x] Product grid responsive gaps
-- [x] Testimonial, newsletter, footer stacking
+### ✅ Completed
+- [x] Analyzed all 7 pages and their CSS breakpoints
+- [x] Verified GitHub repo setup (branch `main`, origin `Joseph-gold32/gold-dev-cloth-website`)
+- [x] Set up git identity (Joseph Gold / joseph@golddev.com)
 
-### `men.html`
-- [x] Added 360px, 320px breakpoints  
-- [x] Category/grid sections fluid on mobile
-- [x] Product grid responsive (2-col → 1-col on 360px)
-- [x] Hero, video, testimonials mobile-sized
+### ⬜ In Progress / To Do
 
-### `skin.html`
-- [x] Added 360px, 320px breakpoints
-- [x] Hero grid stacked
-- [x] Category grid single column
-- [x] Product grid, tabs, newsletter, footer fixed
+#### Responsive Fixes
+- [ ] **men.html** — Fix `filmVideo` JS reference (add missing `id="filmVideo"` to the film `<video>` element)
+- [ ] **story.html** — Fix `heroVideo` / `filmVideo` JS references (add missing IDs); fix invalid Pexels video URL so hero video plays
+- [ ] **skin.html** — Repair broken/truncated auth modal (re-add missing sign-in/sign-up forms inside the modal)
+- [ ] Standardize brand naming to **GOLD & DEV** across pages (remove "Nova & Oak" / "ModernEssentials" leftovers)
+- [ ] Fix `img{width:100%;height:100%}` distortion on layout images where needed
+- [ ] Final responsive review of all breakpoints (320px–1024px) on every page
 
-### `contact.html`
-- [x] Added 768px, 480px, 360px, 320px breakpoints
-- [x] Form card and info side stack
-- [x] FAQ accordion mobile-friendly
-- [x] Social icons and map frame sized down
+#### Hosting / Deployment
+- [ ] Create `.github/workflows/deploy.yml` to auto-deploy to GitHub Pages on push to `main`
+- [ ] Commit all changes
+- [ ] Push to GitHub (triggers Pages build)
+- [ ] Verify live site URL
 
-### `blog.html`
-- [x] Added 480px, 360px, 320px breakpoints
-- [x] Grid collapses properly (3 → 2 → 1 column)
-- [x] Featured post stacks
-- [x] Newsletter, picks, footer fixed
+#### Docs
+- [ ] Update `README.md` with deployment status
+- [ ] Update `TODO.md` notes
 
-### `story.html`
-- [x] Added 360px, 320px breakpoints
-- [x] Hero, stats, timeline, values, process sections mobile
-- [x] Film, quote block, gallery, CTA banner sized down
-- [x] Footer stacks
-
-### `auth.html` / `sign.css`
-- [x] Added 480px, 360px, 320px breakpoints
-- [x] Form inputs, tabs, buttons sized down
-- [x] Social auth stacks vertically on small screens
+---
 
 ## Notes
-- The "not showing other pages" issue is likely because not all `.html` files were committed/pushed to GitHub. Run `git add . && git commit -m "Add all pages + responsive fixes" && git push` to deploy all pages.
-- All images use responsive `max-width: 100%` and `object-fit: cover` where applicable.
-- All grids use `grid-template-columns: repeat(auto-fill, ...)` or explicit breakpoint overrides.
-
+- Hosting: **GitHub Pages** via GitHub Actions workflow (no `gh` CLI auth required).
+- Site: `https://<owner>.github.io/<repo>/` after first successful deploy.

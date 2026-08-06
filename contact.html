@@ -106,6 +106,33 @@
     background: var(--ink);
   }
 
+  /* ---------- MOBILE MENU ---------- */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    padding: 92px 5vw 24px;
+    flex-direction: column;
+    z-index: 99;
+    box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.15);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0.8;
+  }
+  .mobile-menu a.active { color: var(--gold); opacity: 1; }
+  .mobile-menu a:last-child { border-bottom: none; }
+
   /* ---------- HERO ---------- */
   .hero {
     min-height: 62vh;
@@ -619,8 +646,16 @@
     <a href="./story.html">Story</a>
     <a href="#" class="active">Contact</a>
   </div>
-  <div class="nav-icon"><span></span><span></span><span></span></div>
+  <div class="nav-icon" id="navIcon"><span></span><span></span><span></span></div>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="./index.html">Women</a>
+  <a href="./men.html">Men</a>
+  <a href="./skin.html">Skincare</a>
+  <a href="./story.html">Story</a>
+  <a href="#" class="active">Contact</a>
+</div>
 
 <section class="hero">
   <div class="hero-eyebrow">Get in Touch</div>
@@ -757,6 +792,16 @@
 </footer>
 
 <script>
+  // Mobile menu toggle
+  const navIcon = document.getElementById('navIcon');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (navIcon) {
+    navIcon.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+  }
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
   // Scroll reveal
   const revealEls = document.querySelectorAll('.form-card, .info-block, .faq-item');
   const observer = new IntersectionObserver((entries) => {

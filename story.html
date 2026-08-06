@@ -481,11 +481,10 @@
 
 <main>
   <section class="hero" style="padding:0;">
-    <div class="hero-video-wrap">
-      <video src="https://www.pexels.com/download/video/9153883/" controls autoplay loop muted>
-        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-        <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+<div class="hero-video-wrap">
+      <video id="heroVideo" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=1600&q=80&auto=format&fit=crop">
         <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
+        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <button class="hero-play-fallback" id="heroPlayFallback" aria-label="Play video">
@@ -705,12 +704,9 @@
         <p>A short film inside the workshop — the cutting, the fitting, the finishing that never makes it to a product photo.</p>
       </div>
 
-      <div class="film reveal">
-        <video src="https://www.pexels.com/download/video/9480068/" width="100%" controls loop autoplay muted></video>
-        <source src="https://www.pexels.com/video/models-on-a-field-8943612/">
-          <!-- <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
-          <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
-          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4"> -->
+<div class="film reveal">
+        <video id="filmVideo" width="100%" controls loop muted playsinline poster="https://images.unsplash.com/photo-1445205170230-053b83016050?w=900&q=80&auto=format&fit=crop">
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <div class="film-overlay"></div>
