@@ -69,6 +69,27 @@ h1, h2, h3 {
   color: var(--gold-deep);
 }
 
+.back-home-wrap {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 20;
+}
+
+.back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 10px 25px -18px rgba(33, 29, 25, 0.8);
+}
+
 .page {
   min-height: 100vh;
   display: grid;
