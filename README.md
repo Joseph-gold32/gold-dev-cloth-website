@@ -1,59 +1,88 @@
 # GOLD & DEV — Modern Wardrobe Co.
 
-A modern fashion e-commerce brand built by **Joseph Gold**, featuring collections for women, men, and skincare products.
+A modern fashion storefront and brand website for curated clothing, skincare, and everyday luxury essentials.
 
-## Brand Overview
+## Overview
 
-GOLD & DEV is a thoughtfully designed clothing and skincare brand offering:
-- **Womenswear** — Clean silhouettes, honest fabrics, timeless pieces
-- **Menswear** — Tailored fits, quality construction, versatile layers
-- **Skincare** — Vegan, dermatologist-tested, clean luxury formulations
-- **The Journal** — Stories on craft, style, and the making of Gold & Dev
+GOLD & DEV is a boutique-style fashion brand website created to showcase premium collections, editorial storytelling, and customer-first shopping experiences. The project is built as a responsive static website and is designed to work well on both desktop and mobile devices.
 
-## Pages
+## Features
 
-| Page | File | Description |
-|------|------|-------------|
-| Home (Women) | `index.html` | Women's collection landing page with hero, products, testimonials |
-| Men | `men.html` | Men's collection with video hero, product grid, brand film |
-| Skincare | `skin.html` | Skincare products with glow routine, categories, reviews |
-| Story | `story.html` | Brand origin story, timeline, values, maker film |
-| Contact | `contact.html` | Contact form, FAQ, studio info |
-| Blog | `blog.html` | The Journal — articles on craft, style, interviews |
-| Auth | `auth.html` | Sign in / Sign up with Firebase authentication |
+- Responsive landing page and product layout
+- Mobile-friendly hamburger navigation
+- Fashion and skincare product collection sections
+- Story, blog, contact, and sign-in pages
+- Clean static architecture for GitHub Pages deployment
 
-## Tech Stack
+## Project Structure
 
-- **Frontend:** HTML5, CSS3, Vanilla JavaScript
-- **Authentication:** Firebase Auth (Email/Password + Google)
-- **Hosting:** GitHub Pages
-
-## Firebase Configuration
-
-The site uses Firebase Authentication. To configure for your own Firebase project:
-
-1. Go to [Firebase Console](https://console.firebase.google.com)
-2. Create or select your project
-3. Enable **Email/Password** and **Google** sign-in methods
-4. Update `firebaseConfig` in `auth.html` with your project credentials
-5. Add your GitHub Pages domain to **Authorized domains** in Firebase Auth settings
+```text
+GOLD-DEV PROJECT/
+├── .github/
+│   └── workflows/
+│       └── deploy-pages.yml
+├── assets/
+│   ├── css/
+│   │   └── main.css
+│   ├── images/
+│   └── js/
+├── index.html
+├── men.html
+├── skin.html
+├── story.html
+├── contact.html
+├── blog.html
+├── auth.html
+├── README.md
+├── ORGANIZATION.md
+├── SETUP_GUIDE.md
+├── package.json
+├── .gitignore
+├── .nojekyll
+├── TODO.md
+└── index-responsive.html
+```
 
 ## Local Development
 
-Simply open any `.html` file in your browser. For Firebase features (auth), use a local server:
+Open the site directly in a browser, or run a local server:
 
 ```bash
-# Using Python
-python -m http.server 8000
-# Or with VS Code Live Server extension
+py -m http.server 8000
 ```
 
-## Deployment
+Then visit:
 
-The site is deployed on **GitHub Pages** from the `main` branch root.
+```text
+http://localhost:8000
+```
 
----
+## GitHub Pages Deployment
 
-© 2026 GOLD & DEV. Built by Joseph Gold.
-</｜｜DSML｜｜parameter>
-</create_file>
+This project is configured for deployment as a static website on GitHub Pages.
+
+### Steps to publish
+
+1. Push the repository to GitHub.
+2. Open the repository on GitHub.
+3. Go to Settings → Pages.
+4. In the Source section, choose GitHub Actions.
+5. Save the setting.
+
+The workflow file in `.github/workflows/deploy-pages.yml` will build and publish the site automatically.
+
+## Notes
+
+- `index.html` is the homepage.
+- The project uses static HTML, CSS, and JavaScript.
+- Firebase/Auth code is used in the authentication pages when enabled.
+
+## License
+
+This project is intended for personal portfolio and brand showcase use.
+
+## Contact
+
+Joseph Gold
+- GitHub: https://github.com/Joseph-gold32
+- Project: https://github.com/Joseph-gold32/gold-dev-cloth-website
